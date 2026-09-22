@@ -1,0 +1,12 @@
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(
+D:\AVQA_experiment\QA-TIGER2\QA-TIGER\reproduce_qast_recent2025_v3_77_24\src\models\net_qast_ehr.py:149: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  nn.TransformerEncoder(

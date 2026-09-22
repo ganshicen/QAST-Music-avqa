@@ -1,0 +1,83 @@
+{
+  "seed": 456,
+  "split": "official test split",
+  "selection": "frozen best validation checkpoint; inference only",
+  "subtasks": {
+    "Audio/Counting": {
+      "accuracy": 85.15240904621436,
+      "correct": 866,
+      "total": 1017
+    },
+    "Audio/Comparative": {
+      "accuracy": 61.27946127946128,
+      "correct": 364,
+      "total": 594
+    },
+    "Visual/Counting": {
+      "accuracy": 84.12698412698413,
+      "correct": 1007,
+      "total": 1197
+    },
+    "Visual/Location": {
+      "accuracy": 88.65306122448979,
+      "correct": 1086,
+      "total": 1225
+    },
+    "Audio-Visual/Existential": {
+      "accuracy": 83.29959514170041,
+      "correct": 823,
+      "total": 988
+    },
+    "Audio-Visual/Counting": {
+      "accuracy": 78.18181818181819,
+      "correct": 989,
+      "total": 1265
+    },
+    "Audio-Visual/Location": {
+      "accuracy": 70.97826086956522,
+      "correct": 653,
+      "total": 920
+    },
+    "Audio-Visual/Comparative": {
+      "accuracy": 62.5794732061762,
+      "correct": 689,
+      "total": 1101
+    },
+    "Audio-Visual/Temporal": {
+      "accuracy": 71.41119221411192,
+      "correct": 587,
+      "total": 822
+    }
+  },
+  "summary": {
+    "Audio": {
+      "accuracy": 76.35009310986965,
+      "correct": 1230,
+      "total": 1611
+    },
+    "Visual": {
+      "accuracy": 86.41618497109826,
+      "correct": 2093,
+      "total": 2422
+    },
+    "Audio-Visual": {
+      "accuracy": 73.4105180533752,
+      "correct": 3741,
+      "total": 5096
+    },
+    "Overall": {
+      "accuracy": 77.37977872713331,
+      "correct": 7064,
+      "total": 9129
+    }
+  },
+  "av_temporal": {
+    "accuracy": 71.41119221411192,
+    "correct": 587,
+    "total": 822
+  },
+  "checkpoint": "D:\\model\\qast_ehr_ablation_without_scm_seed456\\2026-09-20-11-34-24_seed456\\best.pt",
+  "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\without_scm_multiseed\\configs\\without_scm_seed456.py",
+  "sha256": "373ccdf49ebbae8e2e3c637427de055d8f4d3ec09553feced9d965e1290b49c4",
+  "evaluated_at": "2026-09-20T05:36:16.113254+00:00"
+}

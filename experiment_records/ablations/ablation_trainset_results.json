@@ -1,0 +1,131 @@
+{
+  "split": "official training split",
+  "selection": "best validation checkpoint for each ablation",
+  "generated_at": "2026-09-19T11:49:29.815474+00:00",
+  "results": [
+    {
+      "audio": {
+        "accuracy": 86.50807740102965,
+        "correct": 4873,
+        "total": 5633
+      },
+      "visual": {
+        "accuracy": 97.36997287415969,
+        "correct": 8256,
+        "total": 8479
+      },
+      "audio_visual": {
+        "accuracy": 84.31658714566376,
+        "correct": 15021,
+        "total": 17815
+      },
+      "overall": {
+        "accuracy": 88.16988755598709,
+        "correct": 28150,
+        "total": 31927
+      },
+      "av_temporal": {
+        "accuracy": 90.33379694019472,
+        "correct": 2598,
+        "total": 2876
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_cmg_seed713\\2026-09-19-11-37-43_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_cmg_seed713.py",
+      "sha256": "5be05afb17bbab5048f372c4a887333dd90702fd15b9692973debb96bc9d7863",
+      "model": "without_cmg"
+    },
+    {
+      "audio": {
+        "accuracy": 88.05254748801704,
+        "correct": 4960,
+        "total": 5633
+      },
+      "visual": {
+        "accuracy": 97.94787121122773,
+        "correct": 8305,
+        "total": 8479
+      },
+      "audio_visual": {
+        "accuracy": 84.6140892506315,
+        "correct": 15074,
+        "total": 17815
+      },
+      "overall": {
+        "accuracy": 88.76186299996868,
+        "correct": 28339,
+        "total": 31927
+      },
+      "av_temporal": {
+        "accuracy": 90.36856745479832,
+        "correct": 2599,
+        "total": 2876
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_scm_seed713.py",
+      "sha256": "be9695ae4557a6cc5e607dc84550b2b6764be741cccfe0e57a83ab37a55054cb",
+      "model": "without_scm"
+    },
+    {
+      "audio": {
+        "accuracy": 84.43103142197764,
+        "correct": 4756,
+        "total": 5633
+      },
+      "visual": {
+        "accuracy": 95.589102488501,
+        "correct": 8105,
+        "total": 8479
+      },
+      "audio_visual": {
+        "accuracy": 80.74094863878754,
+        "correct": 14384,
+        "total": 17815
+      },
+      "overall": {
+        "accuracy": 85.33529614432925,
+        "correct": 27245,
+        "total": 31927
+      },
+      "av_temporal": {
+        "accuracy": 84.73574408901251,
+        "correct": 2437,
+        "total": 2876
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_adaptive_position_seed713\\2026-09-19-15-43-05_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_adaptive_position_seed713.py",
+      "sha256": "05188080ce49a329a4c9e8cf5ef3a284f91dfd5b080cc3a34fc24eba45d32ab0",
+      "model": "without_adaptive_position"
+    },
+    {
+      "audio": {
+        "accuracy": 86.95189064441684,
+        "correct": 4898,
+        "total": 5633
+      },
+      "visual": {
+        "accuracy": 96.4618469159099,
+        "correct": 8179,
+        "total": 8479
+      },
+      "audio_visual": {
+        "accuracy": 83.07044625315746,
+        "correct": 14799,
+        "total": 17815
+      },
+      "overall": {
+        "accuracy": 87.31167976947411,
+        "correct": 27876,
+        "total": 31927
+      },
+      "av_temporal": {
+        "accuracy": 87.30876216968011,
+        "correct": 2511,
+        "total": 2876
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_patch_grounder_seed713\\2026-09-19-17-43-24_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_patch_grounder_seed713.py",
+      "sha256": "2e83d3bdb9879f92ea27698221f38a1674aed810d2882afd2e5f045081858178",
+      "model": "without_patch_grounder"
+    }
+  ]
+}

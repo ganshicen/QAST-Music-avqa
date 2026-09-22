@@ -1,0 +1,36 @@
+{
+    "overall":  78.08669001751313,
+    "audio":  79.15632754342431,
+    "visual":  85.65539983511954,
+    "audio_visual":  74.1467242055708,
+    "av_temporal":  74.20924574209246,
+    "position_ratio":  0.050874333672654565,
+    "max_query_share":  0.3290844082208204,
+    "eligible_for_test":  false,
+    "checkpoint":  "D:\\model\\qast_ehr_ablation_without_patch_grounder_seed713\\2026-09-19-17-43-24_seed713\\best.pt",
+    "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_patch_grounder_seed713.py",
+    "sha256":  "2e83d3bdb9879f92ea27698221f38a1674aed810d2882afd2e5f045081858178",
+    "counts":  {
+                   "overall":  {
+                                   "correct":  3567,
+                                   "total":  4568
+                               },
+                   "Audio":  {
+                                 "correct":  638,
+                                 "total":  806
+                             },
+                   "Visual":  {
+                                  "correct":  1039,
+                                  "total":  1213
+                              },
+                   "Audio-Visual":  {
+                                        "correct":  1890,
+                                        "total":  2549
+                                    },
+                   "av_temporal":  {
+                                       "correct":  305,
+                                       "total":  411
+                                   }
+               },
+    "name":  "without_patch_grounder"
+}

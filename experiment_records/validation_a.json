@@ -1,0 +1,35 @@
+{
+  "overall": 78.7215411558669,
+  "audio": 78.53598014888337,
+  "visual": 87.05688375927453,
+  "audio_visual": 74.81365241271087,
+  "av_temporal": 74.45255474452554,
+  "position_ratio": 0.051114484862819394,
+  "max_query_share": 0.3241509724974008,
+  "eligible_for_test": true,
+  "checkpoint": "D:\\model\\qast_ehr_a_seed713\\2026-09-18-16-42-55_seed713\\best.pt",
+  "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\configs\\qast_ehr_a_seed713.py",
+  "sha256": "0338c8927b2fa35f9ee9a713d2a563b114c00e371c63d66d9a9ead5ac00999e8",
+  "counts": {
+    "overall": {
+      "correct": 3596,
+      "total": 4568
+    },
+    "Audio": {
+      "correct": 633,
+      "total": 806
+    },
+    "Visual": {
+      "correct": 1056,
+      "total": 1213
+    },
+    "Audio-Visual": {
+      "correct": 1907,
+      "total": 2549
+    },
+    "av_temporal": {
+      "correct": 306,
+      "total": 411
+    }
+  }
+}

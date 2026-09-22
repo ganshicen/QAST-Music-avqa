@@ -1,0 +1,39 @@
+{
+    "overall":  78.39316987740806,
+    "audio":  77.1712158808933,
+    "visual":  86.06760098928277,
+    "audio_visual":  75.12750098077677,
+    "av_temporal":  73.47931873479318,
+    "position_ratio":  0.05099176691542745,
+    "max_query_share":  0.37562154428497035,
+    "eligible_for_test":  true,
+    "checkpoint":  "D:\\model\\qast_ehr_ablation_without_tacl_seed713\\2026-09-20-13-38-35_seed713\\best.pt",
+    "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\tacl_sacl_ablations\\configs\\without_tacl_seed713.py",
+    "sha256":  "c4f218430d3b121239f33bbd9f594f24b6a26302d3e898292d695e089282ac81",
+    "counts":  {
+                   "overall":  {
+                                   "correct":  3581,
+                                   "total":  4568
+                               },
+                   "Audio":  {
+                                 "correct":  622,
+                                 "total":  806
+                             },
+                   "Visual":  {
+                                  "correct":  1044,
+                                  "total":  1213
+                              },
+                   "Audio-Visual":  {
+                                        "correct":  1915,
+                                        "total":  2549
+                                    },
+                   "av_temporal":  {
+                                       "correct":  302,
+                                       "total":  411
+                                   }
+               },
+    "name":  "without_tacl",
+    "seed":  713,
+    "disabled_loss":  "lambda_tacl",
+    "disabled_weight":  0
+}

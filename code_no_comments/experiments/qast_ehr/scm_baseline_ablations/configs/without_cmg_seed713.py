@@ -1,0 +1,2 @@
+from experiments.qast_ehr.scm_baseline_ablations.configs.scm_baseline_ablation_base import build_scm_baseline_ablation
+config = build_scm_baseline_ablation('D:/model/qast_ehr_scm_baseline_without_cmg_seed713', 'enable_cmg')

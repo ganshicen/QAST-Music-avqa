@@ -1,0 +1,36 @@
+{
+    "overall":  77.78021015761821,
+    "audio":  77.91563275434243,
+    "visual":  85.98516075845012,
+    "audio_visual":  73.8328756375049,
+    "av_temporal":  71.28953771289538,
+    "position_ratio":  0.0,
+    "max_query_share":  0.1563358062692962,
+    "eligible_for_test":  false,
+    "checkpoint":  "D:\\model\\qast_ehr_ablation_without_adaptive_position_seed713\\2026-09-19-15-43-05_seed713\\best.pt",
+    "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_adaptive_position_seed713.py",
+    "sha256":  "05188080ce49a329a4c9e8cf5ef3a284f91dfd5b080cc3a34fc24eba45d32ab0",
+    "counts":  {
+                   "overall":  {
+                                   "correct":  3553,
+                                   "total":  4568
+                               },
+                   "Audio":  {
+                                 "correct":  628,
+                                 "total":  806
+                             },
+                   "Visual":  {
+                                  "correct":  1043,
+                                  "total":  1213
+                              },
+                   "Audio-Visual":  {
+                                        "correct":  1882,
+                                        "total":  2549
+                                    },
+                   "av_temporal":  {
+                                       "correct":  293,
+                                       "total":  411
+                                   }
+               },
+    "name":  "without_adaptive_position"
+}

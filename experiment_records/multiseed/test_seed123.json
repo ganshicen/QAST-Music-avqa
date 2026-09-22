@@ -1,0 +1,83 @@
+{
+  "seed": 123,
+  "split": "official test split",
+  "selection": "frozen best validation checkpoint; inference only",
+  "subtasks": {
+    "Audio/Counting": {
+      "accuracy": 85.15240904621436,
+      "correct": 866,
+      "total": 1017
+    },
+    "Audio/Comparative": {
+      "accuracy": 61.27946127946128,
+      "correct": 364,
+      "total": 594
+    },
+    "Visual/Counting": {
+      "accuracy": 83.95989974937343,
+      "correct": 1005,
+      "total": 1197
+    },
+    "Visual/Location": {
+      "accuracy": 88.08163265306122,
+      "correct": 1079,
+      "total": 1225
+    },
+    "Audio-Visual/Existential": {
+      "accuracy": 83.09716599190283,
+      "correct": 821,
+      "total": 988
+    },
+    "Audio-Visual/Counting": {
+      "accuracy": 77.31225296442688,
+      "correct": 978,
+      "total": 1265
+    },
+    "Audio-Visual/Location": {
+      "accuracy": 70.54347826086956,
+      "correct": 649,
+      "total": 920
+    },
+    "Audio-Visual/Comparative": {
+      "accuracy": 62.67029972752044,
+      "correct": 690,
+      "total": 1101
+    },
+    "Audio-Visual/Temporal": {
+      "accuracy": 70.92457420924575,
+      "correct": 583,
+      "total": 822
+    }
+  },
+  "summary": {
+    "Audio": {
+      "accuracy": 76.35009310986965,
+      "correct": 1230,
+      "total": 1611
+    },
+    "Visual": {
+      "accuracy": 86.04459124690338,
+      "correct": 2084,
+      "total": 2422
+    },
+    "Audio-Visual": {
+      "accuracy": 73.01805337519623,
+      "correct": 3721,
+      "total": 5096
+    },
+    "Overall": {
+      "accuracy": 77.06210976010516,
+      "correct": 7035,
+      "total": 9129
+    }
+  },
+  "av_temporal": {
+    "accuracy": 70.92457420924575,
+    "correct": 583,
+    "total": 822
+  },
+  "checkpoint": "D:\\model\\qast_ehr_ablation_without_scm_seed123\\2026-09-20-10-08-45_seed123\\best.pt",
+  "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\without_scm_multiseed\\configs\\without_scm_seed123.py",
+  "sha256": "6cefb53cb7fa832c518716e4069822c7e39bf65d6588e7c35f9d477a85c9f17c",
+  "evaluated_at": "2026-09-20T05:34:26.884121+00:00"
+}

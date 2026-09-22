@@ -1,0 +1,5 @@
+{
+  "epoch": 9,
+  "validation_accuracy": 78.26182136602452,
+  "weight_kind": "ema"
+}

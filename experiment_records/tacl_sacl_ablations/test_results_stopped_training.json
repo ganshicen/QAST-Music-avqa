@@ -1,0 +1,174 @@
+{
+  "protocol": "seed 713; official test split; frozen best validation checkpoint; no test-time training",
+  "generated_at": "2026-09-20T08:37:34.315845+00:00",
+  "results": [
+    {
+      "name": "w/o TACL",
+      "split": "official test split",
+      "selection": "best validation checkpoint available when training was stopped; inference only",
+      "training_status": "completed 15 epochs; best validation checkpoint",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 84.85742379547689,
+          "correct": 863,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 63.13131313131313,
+          "correct": 375,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 83.95989974937343,
+          "correct": 1005,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 87.75510204081633,
+          "correct": 1075,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 82.5910931174089,
+          "correct": 816,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 77.86561264822134,
+          "correct": 985,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 69.45652173913044,
+          "correct": 639,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 63.03360581289736,
+          "correct": 694,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 69.4647201946472,
+          "correct": 571,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.84667908131595,
+          "correct": 1238,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 85.87943848059454,
+          "correct": 2080,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 72.70408163265306,
+          "correct": 3705,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 76.93066053236937,
+          "correct": 7023,
+          "total": 9129
+        }
+      },
+      "av_temporal": {
+        "accuracy": 69.4647201946472,
+        "correct": 571,
+        "total": 822
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_tacl_seed713\\2026-09-20-13-38-35_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\tacl_sacl_ablations\\configs\\without_tacl_seed713.py",
+      "sha256": "c4f218430d3b121239f33bbd9f594f24b6a26302d3e898292d695e089282ac81",
+      "evaluated_at": "2026-09-20T08:36:25.399068+00:00"
+    },
+    {
+      "name": "w/o SACL",
+      "split": "official test split",
+      "selection": "best validation checkpoint available when training was stopped; inference only",
+      "training_status": "stopped at the start of epoch 15 after epoch 14 completed; best validation checkpoint from epoch 9",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 85.05408062930186,
+          "correct": 865,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 61.784511784511785,
+          "correct": 367,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 83.87635756056808,
+          "correct": 1004,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 88.0,
+          "correct": 1078,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 83.70445344129554,
+          "correct": 827,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 77.3913043478261,
+          "correct": 979,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 71.30434782608695,
+          "correct": 656,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 62.21616712079928,
+          "correct": 685,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 70.92457420924575,
+          "correct": 583,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.47423960273122,
+          "correct": 1232,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 85.96201486374896,
+          "correct": 2082,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 73.19466248037676,
+          "correct": 3730,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 77.160696680907,
+          "correct": 7044,
+          "total": 9129
+        }
+      },
+      "av_temporal": {
+        "accuracy": 70.92457420924575,
+        "correct": 583,
+        "total": 822
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_sacl_seed713\\2026-09-20-15-14-12_seed713\\best.pt",
+      "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\tacl_sacl_ablations\\configs\\without_sacl_seed713.py",
+      "sha256": "507e8f04c029ccc2fde151a6dcf1557ed02b6d35e2dbe1b8ef99aa491792d975",
+      "evaluated_at": "2026-09-20T08:37:34.307213+00:00"
+    }
+  ]
+}

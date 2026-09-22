@@ -1,0 +1,119 @@
+{
+    "protocol":  "SCM-off baseline; each remaining module removed separately; seed 713; random initialization; 15 epochs",
+    "generated_at":  "2026-09-19T20:23:05.1708997Z",
+    "baseline":  {
+                     "name":  "without_scm",
+                     "checkpoint":  "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\best.pt",
+                     "test_overall":  77.379778727133314
+                 },
+    "results":  [
+                    {
+                        "overall":  78.4369527145359,
+                        "audio":  79.28039702233251,
+                        "visual":  86.23248145094806,
+                        "audio_visual":  74.46057277363673,
+                        "av_temporal":  74.20924574209246,
+                        "position_ratio":  0.051369620574862544,
+                        "max_query_share":  0.2241712675200707,
+                        "eligible_for_test":  true,
+                        "checkpoint":  "D:\\model\\qast_ehr_scm_baseline_without_cmg_seed713\\2026-09-20-00-05-43_seed713\\best.pt",
+                        "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\scm_baseline_ablations\\configs\\without_cmg_seed713.py",
+                        "sha256":  "7995bda332e034dd1610080374ce3c40a666e53889adf08d281edecafb2cd242",
+                        "counts":  {
+                                       "overall":  {
+                                                       "correct":  3583,
+                                                       "total":  4568
+                                                   },
+                                       "Audio":  {
+                                                     "correct":  639,
+                                                     "total":  806
+                                                 },
+                                       "Visual":  {
+                                                      "correct":  1046,
+                                                      "total":  1213
+                                                  },
+                                       "Audio-Visual":  {
+                                                            "correct":  1898,
+                                                            "total":  2549
+                                                        },
+                                       "av_temporal":  {
+                                                           "correct":  305,
+                                                           "total":  411
+                                                       }
+                                   },
+                        "name":  "scm_baseline_without_cmg"
+                    },
+                    {
+                        "overall":  78.15236427320491,
+                        "audio":  77.54342431761786,
+                        "visual":  87.38664468260511,
+                        "audio_visual":  73.95056885052962,
+                        "av_temporal":  74.93917274939173,
+                        "position_ratio":  0.0,
+                        "max_query_share":  0.2576786398263502,
+                        "eligible_for_test":  false,
+                        "checkpoint":  "D:\\model\\qast_ehr_scm_baseline_without_adaptive_position_seed713\\2026-09-20-01-44-18_seed713\\best.pt",
+                        "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\scm_baseline_ablations\\configs\\without_adaptive_position_seed713.py",
+                        "sha256":  "bcfad449143102892563d2d91726a1a2fdb4a4ff443c37bc8fdd7c5a9c94dd2c",
+                        "counts":  {
+                                       "overall":  {
+                                                       "correct":  3570,
+                                                       "total":  4568
+                                                   },
+                                       "Audio":  {
+                                                     "correct":  625,
+                                                     "total":  806
+                                                 },
+                                       "Visual":  {
+                                                      "correct":  1060,
+                                                      "total":  1213
+                                                  },
+                                       "Audio-Visual":  {
+                                                            "correct":  1885,
+                                                            "total":  2549
+                                                        },
+                                       "av_temporal":  {
+                                                           "correct":  308,
+                                                           "total":  411
+                                                       }
+                                   },
+                        "name":  "scm_baseline_without_adaptive_position"
+                    },
+                    {
+                        "overall":  77.64886164623468,
+                        "audio":  77.41935483870968,
+                        "visual":  85.07831821929102,
+                        "audio_visual":  74.18595527657905,
+                        "av_temporal":  72.50608272506082,
+                        "position_ratio":  0.05167311201779006,
+                        "max_query_share":  0.35481172659634297,
+                        "eligible_for_test":  false,
+                        "checkpoint":  "D:\\model\\qast_ehr_scm_baseline_without_patch_grounder_seed713\\2026-09-20-03-02-12_seed713\\best.pt",
+                        "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\scm_baseline_ablations\\configs\\without_patch_grounder_seed713.py",
+                        "sha256":  "613ed7f298bcf623c8c566ea8bb568d8f0a55f115a59c761929ce61dd1881bda",
+                        "counts":  {
+                                       "overall":  {
+                                                       "correct":  3547,
+                                                       "total":  4568
+                                                   },
+                                       "Audio":  {
+                                                     "correct":  624,
+                                                     "total":  806
+                                                 },
+                                       "Visual":  {
+                                                      "correct":  1032,
+                                                      "total":  1213
+                                                  },
+                                       "Audio-Visual":  {
+                                                            "correct":  1891,
+                                                            "total":  2549
+                                                        },
+                                       "av_temporal":  {
+                                                           "correct":  298,
+                                                           "total":  411
+                                                       }
+                                   },
+                        "name":  "scm_baseline_without_patch_grounder"
+                    }
+                ]
+}

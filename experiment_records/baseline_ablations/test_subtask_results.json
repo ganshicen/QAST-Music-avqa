@@ -1,0 +1,304 @@
+{
+  "split": "official test split",
+  "selection": "best validation checkpoint; inference only",
+  "baseline": "without_scm_baseline",
+  "generated_at": "2026-09-19T20:35:07.842515+00:00",
+  "results": [
+    {
+      "model": "without_scm_baseline",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 84.95575221238938,
+          "correct": 864,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 61.111111111111114,
+          "correct": 363,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 83.62573099415205,
+          "correct": 1001,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 88.16326530612245,
+          "correct": 1080,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 83.70445344129554,
+          "correct": 827,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 78.41897233201581,
+          "correct": 992,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 71.08695652173913,
+          "correct": 654,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 63.94187102633969,
+          "correct": 704,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 70.43795620437956,
+          "correct": 579,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.16387337057728,
+          "correct": 1227,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 85.92072667217175,
+          "correct": 2081,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 73.70486656200941,
+          "correct": 3756,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 77.37977872713331,
+          "correct": 7064,
+          "total": 9129
+        }
+      },
+      "checkpoint": "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\best.pt",
+      "sha256": "be9695ae4557a6cc5e607dc84550b2b6764be741cccfe0e57a83ab37a55054cb"
+    },
+    {
+      "model": "scm_baseline_without_cmg",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 84.56243854473944,
+          "correct": 860,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 62.794612794612796,
+          "correct": 373,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 82.95739348370927,
+          "correct": 993,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 88.08163265306122,
+          "correct": 1079,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 83.09716599190283,
+          "correct": 821,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 76.04743083003953,
+          "correct": 962,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 70.8695652173913,
+          "correct": 652,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 61.58038147138964,
+          "correct": 678,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 69.34306569343066,
+          "correct": 570,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.53631284916202,
+          "correct": 1233,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 85.54913294797687,
+          "correct": 2072,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 72.2723704866562,
+          "correct": 3683,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 76.54726695147333,
+          "correct": 6988,
+          "total": 9129
+        }
+      },
+      "checkpoint": "D:\\model\\qast_ehr_scm_baseline_without_cmg_seed713\\2026-09-20-00-05-43_seed713\\best.pt",
+      "sha256": "7995bda332e034dd1610080374ce3c40a666e53889adf08d281edecafb2cd242"
+    },
+    {
+      "model": "scm_baseline_without_adaptive_position",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 84.95575221238938,
+          "correct": 864,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 61.61616161616162,
+          "correct": 366,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 83.62573099415205,
+          "correct": 1001,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 87.83673469387755,
+          "correct": 1076,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 83.09716599190283,
+          "correct": 821,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 77.86561264822134,
+          "correct": 985,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 70.65217391304348,
+          "correct": 650,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 62.03451407811081,
+          "correct": 683,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 69.95133819951339,
+          "correct": 575,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.35009310986965,
+          "correct": 1230,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 85.75557390586292,
+          "correct": 2077,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 72.88069073783359,
+          "correct": 3714,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 76.90875232774674,
+          "correct": 7021,
+          "total": 9129
+        }
+      },
+      "checkpoint": "D:\\model\\qast_ehr_scm_baseline_without_adaptive_position_seed713\\2026-09-20-01-44-18_seed713\\best.pt",
+      "sha256": "bcfad449143102892563d2d91726a1a2fdb4a4ff443c37bc8fdd7c5a9c94dd2c"
+    },
+    {
+      "model": "scm_baseline_without_patch_grounder",
+      "subtasks": {
+        "Audio/Counting": {
+          "accuracy": 85.93903638151426,
+          "correct": 874,
+          "total": 1017
+        },
+        "Audio/Comparative": {
+          "accuracy": 59.5959595959596,
+          "correct": 354,
+          "total": 594
+        },
+        "Visual/Counting": {
+          "accuracy": 83.29156223893067,
+          "correct": 997,
+          "total": 1197
+        },
+        "Visual/Location": {
+          "accuracy": 85.95918367346938,
+          "correct": 1053,
+          "total": 1225
+        },
+        "Audio-Visual/Existential": {
+          "accuracy": 82.79352226720648,
+          "correct": 818,
+          "total": 988
+        },
+        "Audio-Visual/Counting": {
+          "accuracy": 76.7588932806324,
+          "correct": 971,
+          "total": 1265
+        },
+        "Audio-Visual/Location": {
+          "accuracy": 70.54347826086956,
+          "correct": 649,
+          "total": 920
+        },
+        "Audio-Visual/Comparative": {
+          "accuracy": 62.3069936421435,
+          "correct": 686,
+          "total": 1101
+        },
+        "Audio-Visual/Temporal": {
+          "accuracy": 69.7080291970803,
+          "correct": 573,
+          "total": 822
+        }
+      },
+      "summary": {
+        "Audio": {
+          "accuracy": 76.22594661700806,
+          "correct": 1228,
+          "total": 1611
+        },
+        "Visual": {
+          "accuracy": 84.64079273327829,
+          "correct": 2050,
+          "total": 2422
+        },
+        "Audio-Visual": {
+          "accuracy": 72.54709576138147,
+          "correct": 3697,
+          "total": 5096
+        },
+        "Overall": {
+          "accuracy": 76.40486362142623,
+          "correct": 6975,
+          "total": 9129
+        }
+      },
+      "checkpoint": "D:\\model\\qast_ehr_scm_baseline_without_patch_grounder_seed713\\2026-09-20-03-02-12_seed713\\best.pt",
+      "sha256": "613ed7f298bcf623c8c566ea8bb568d8f0a55f115a59c761929ce61dd1881bda"
+    }
+  ]
+}

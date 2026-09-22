@@ -1,0 +1,31 @@
+{
+  "audio": {
+    "accuracy": 76.5983860955928,
+    "correct": 1234,
+    "total": 1611
+  },
+  "visual": {
+    "accuracy": 85.87943848059454,
+    "correct": 2080,
+    "total": 2422
+  },
+  "audio_visual": {
+    "accuracy": 72.95918367346938,
+    "correct": 3718,
+    "total": 5096
+  },
+  "overall": {
+    "accuracy": 77.02924745317121,
+    "correct": 7032,
+    "total": 9129
+  },
+  "av_temporal": {
+    "accuracy": 69.4647201946472,
+    "correct": 571,
+    "total": 822
+  },
+  "checkpoint": "D:\\model\\qast_ehr_a_seed713\\2026-09-18-16-42-55_seed713\\best.pt",
+  "config": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\configs\\qast_ehr_a_seed713.py",
+  "sha256": "0338c8927b2fa35f9ee9a713d2a563b114c00e371c63d66d9a9ead5ac00999e8",
+  "evaluated_at": "2026-09-18T13:45:42.856269+00:00"
+}

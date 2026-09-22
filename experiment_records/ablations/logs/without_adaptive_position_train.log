@@ -1,0 +1,1020 @@
+QUEUE_RUN_START without_adaptive_position f2a4a633ead740e48d5af22d7ccee726
+Code snapshot saved as D:\model\qast_ehr_ablation_without_adaptive_position_seed713\2026-09-19-15-43-05_seed713\code_snapshot.zip
+[2026-09-19 15:43:05,536]-[utils.py line:217]:
+-------------- config -------------- 
+[2026-09-19 15:43:05,536]-[utils.py line:218]:{
+    "standard_protocol": true,
+    "run_test_after_training": false,
+    "amp": true,
+    "gradient_accumulation_steps": 2,
+    "distill_logits": null,
+    "type": "question_aware",
+    "seed": 713,
+    "epochs": 15,
+    "num_labels": 42,
+    "log_interval": 100,
+    "output_dir": "D:/model/qast_ehr_ablation_without_adaptive_position_seed713",
+    "pretrained_weight": "fixed_features_only",
+    "weight": "",
+    "data": {
+        "root": "D:/AVQA_experiment/QA-TIGER2/QA-TIGER/reproduce_qast_recent2025_v3_77_24",
+        "img_size": 336,
+        "batch_size": 24,
+        "eval_batch_size": 48,
+        "num_workers": 0,
+        "frame_sample_rate": 1,
+        "audios_dir": "D:/data/musicavqa/audio",
+        "frames_dir": "D:/data/frames-1fps",
+        "train_annot": "D:/AVQA_experiment/QA-TIGER2/QA-TIGER/reproduce_qast_recent2025_v3_77_24/data/annots/music_avqa/music_avqa_train.json",
+        "valid_annot": "D:/AVQA_experiment/QA-TIGER2/QA-TIGER/reproduce_qast_recent2025_v3_77_24/data/annots/music_avqa/music_avqa_val.json",
+        "test_annot": "D:/AVQA_experiment/QA-TIGER2/QA-TIGER/reproduce_qast_recent2025_v3_77_24/data/annots/music_avqa/music_avqa_test.json",
+        "test_annots": null,
+        "ans_quelen": "D:/AVQA_experiment/QA-TIGER2/QA-TIGER/reproduce_qast_recent2025_v3_77_24/data/annots/music_avqa/answer2idx.json",
+        "audio_feat": "D:/data/musicavqa/vggish",
+        "quest_feat": "D:/data/musicavqa/qst_ViT-L14@336px",
+        "prompt_feat": "D:/data/musicavqa/qaPrompt_ViT-L14@336px",
+        "patch_feat": "D:/data/musicavqa/visual_tome14_60",
+        "video_feat": "D:/data/musicavqa/frames_vit"
+    },
+    "hyper_params": {
+        "gpus": "0",
+        "model_type": "QAST-EHR-2025",
+        "model": {
+            "topK": 10,
+            "num_experts": 1,
+            "audio_dim": 128,
+            "video_dim": 768,
+            "patch_dim": 1024,
+            "question_dim": 768,
+            "d_model": 512,
+            "num_labels": 42,
+            "num_heads": 8,
+            "num_temporal_queries": 10,
+            "event_scales": [
+                3,
+                7,
+                15
+            ],
+            "keep_patches": 4,
+            "lambda_tacl": 0.035,
+            "lambda_sacl": 0.035,
+            "lambda_event": 0.03,
+            "lambda_evidence": 0.06,
+            "lambda_diversity": 0.005,
+            "lambda_position": 0.02,
+            "aux_warmup_epochs": 3,
+            "position_min_strength": 0.05,
+            "position_max_strength": 0.1,
+            "position_init_strength": 0.07,
+            "evidence_margin": 0.2,
+            "dropout": 0.1,
+            "enable_cmg": true,
+            "enable_scm": true,
+            "enable_adaptive_position": false,
+            "enable_patch_grounder": true
+        },
+        "optim": {
+            "name": "AdamW",
+            "lr": 0.0001,
+            "new_lr": null,
+            "encoder_lr": null,
+            "min_lr": 1e-06,
+            "weight_decay": 0.0002,
+            "betas": [
+                0.9,
+                0.999
+            ],
+            "grad_clip": 1.0
+        },
+        "sched": {
+            "name": "cosine",
+            "mode": "max",
+            "gamma": 0.1,
+            "step_size": 6,
+            "factor": 0.5,
+            "patience": 3,
+            "verbose": true,
+            "warmup_epochs": 1
+        },
+        "ema": {
+            "enabled": true,
+            "decay": 0.999
+        }
+    },
+    "mode": "train",
+    "debug": false,
+    "output_path": "",
+    "cur_rank": 0
+} 
+[2026-09-19 15:43:05,536]-[utils.py line:219]:
+-------------- environment -------------- 
+[2026-09-19 15:43:05,536]-[utils.py line:220]:OS version:   
+[2026-09-19 15:43:05,537]-[utils.py line:221]:Kernel version: Windows-10-10.0.26200-SP0 
+[2026-09-19 15:43:05,537]-[utils.py line:222]:Python version: 3.10.20 
+[2026-09-19 15:43:05,537]-[utils.py line:223]:torch version: 2.11.0+cu128 
+[2026-09-19 15:43:05,537]-[utils.py line:224]:cuda version: 12.8 
+[2026-09-19 15:43:05,539]-[utils.py line:225]:cuDNN version: 91900 
+[2026-09-19 15:43:05,540]-[utils.py line:226]:gpu device count: 1 
+[2026-09-19 15:43:05,540]-[utils.py line:231]:gpu device 0: NVIDIA GeForce RTX 5070 Laptop GPU - 8.0GB 
+[2026-09-19 15:43:05,722]-[train.py line:62]:Standard protocol audit passed: train=31927, val=4568, test=9129; no split overlap; no test-derived distillation. 
+[2026-09-19 15:43:09,350]-[utils.py line:204]:
+-------------- parameter info -------------- 
+[2026-09-19 15:43:09,350]-[utils.py line:205]:num total params: 14970936 
+[2026-09-19 15:43:09,350]-[utils.py line:206]:num tunable params: 14970936 
+[2026-09-19 15:43:09,350]-[utils.py line:207]:tunable param ratio: 100.00% 
+[2026-09-19 15:43:09,350]-[utils.py line:208]:tunable params: 
+[2026-09-19 15:43:09,350]-[utils.py line:209]:[
+    "module.audio_projection.weight",
+    "module.audio_projection.bias",
+    "module.video_projection.weight",
+    "module.video_projection.bias",
+    "module.patch_projection.weight",
+    "module.patch_projection.bias",
+    "module.question_projection.weight",
+    "module.question_projection.bias",
+    "module.prompt_projection.weight",
+    "module.prompt_projection.bias",
+    "module.evidence_router.norms.0.weight",
+    "module.evidence_router.norms.0.bias",
+    "module.evidence_router.norms.1.weight",
+    "module.evidence_router.norms.1.bias",
+    "module.evidence_router.norms.2.weight",
+    "module.evidence_router.norms.2.bias",
+    "module.evidence_router.norms.3.weight",
+    "module.evidence_router.norms.3.bias",
+    "module.evidence_router.projections.0.weight",
+    "module.evidence_router.projections.0.bias",
+    "module.evidence_router.projections.1.weight",
+    "module.evidence_router.projections.1.bias",
+    "module.evidence_router.projections.2.weight",
+    "module.evidence_router.projections.2.bias",
+    "module.evidence_router.projections.3.weight",
+    "module.evidence_router.projections.3.bias",
+    "module.evidence_router.question_gate.0.weight",
+    "module.evidence_router.question_gate.0.bias",
+    "module.evidence_router.question_gate.1.weight",
+    "module.evidence_router.question_gate.1.bias",
+    "module.evidence_router.question_gate.3.weight",
+    "module.evidence_router.question_gate.3.bias",
+    "module.evidence_router.refine.0.weight",
+    "module.evidence_router.refine.0.bias",
+    "module.evidence_router.refine.1.weight",
+    "module.evidence_router.refine.1.bias",
+    "module.evidence_router.refine.4.weight",
+    "module.evidence_router.refine.4.bias",
+    "module.patch_grounder.patch_key.weight",
+    "module.patch_grounder.patch_key.bias",
+    "module.patch_grounder.audio_query.weight",
+    "module.patch_grounder.audio_query.bias",
+    "module.patch_grounder.question_query.weight",
+    "module.patch_grounder.question_query.bias",
+    "module.patch_grounder.value.weight",
+    "module.patch_grounder.value.bias",
+    "module.patch_grounder.score_gate.0.weight",
+    "module.patch_grounder.score_gate.0.bias",
+    "module.patch_grounder.score_gate.1.weight",
+    "module.patch_grounder.score_gate.1.bias",
+    "module.patch_grounder.output.0.weight",
+    "module.patch_grounder.output.0.bias",
+    "module.patch_grounder.output.2.weight",
+    "module.patch_grounder.output.2.bias",
+    "module.evidence_norm.weight",
+    "module.evidence_norm.bias",
+    "module.event_memory.branches.0.0.weight",
+    "module.event_memory.branches.0.0.bias",
+    "module.event_memory.branches.0.2.weight",
+    "module.event_memory.branches.0.2.bias",
+    "module.event_memory.branches.1.0.weight",
+    "module.event_memory.branches.1.0.bias",
+    "module.event_memory.branches.1.2.weight",
+    "module.event_memory.branches.1.2.bias",
+    "module.event_memory.branches.2.0.weight",
+    "module.event_memory.branches.2.0.bias",
+    "module.event_memory.branches.2.2.weight",
+    "module.event_memory.branches.2.2.bias",
+    "module.event_memory.question_queries.0.weight",
+    "module.event_memory.question_queries.0.bias",
+    "module.event_memory.question_queries.1.weight",
+    "module.event_memory.question_queries.1.bias",
+    "module.event_memory.question_queries.2.weight",
+    "module.event_memory.question_queries.2.bias",
+    "module.event_memory.scale_gate.0.weight",
+    "module.event_memory.scale_gate.0.bias",
+    "module.event_memory.scale_gate.1.weight",
+    "module.event_memory.scale_gate.1.bias",
+    "module.event_memory.output_norm.weight",
+    "module.event_memory.output_norm.bias",
+    "module.cmg.in_proj_weight",
+    "module.cmg.in_proj_bias",
+    "module.cmg.out_proj.weight",
+    "module.cmg.out_proj.bias",
+    "module.cmg_norm.weight",
+    "module.cmg_norm.bias",
+    "module.temporal_reader.query_tokens",
+    "module.temporal_reader.condition.0.weight",
+    "module.temporal_reader.condition.0.bias",
+    "module.temporal_reader.condition.1.weight",
+    "module.temporal_reader.condition.1.bias",
+    "module.temporal_reader.attention.in_proj_weight",
+    "module.temporal_reader.attention.in_proj_bias",
+    "module.temporal_reader.attention.out_proj.weight",
+    "module.temporal_reader.attention.out_proj.bias",
+    "module.temporal_reader.norm.weight",
+    "module.temporal_reader.norm.bias",
+    "module.temporal_reader.ffn.0.weight",
+    "module.temporal_reader.ffn.0.bias",
+    "module.temporal_reader.ffn.3.weight",
+    "module.temporal_reader.ffn.3.bias",
+    "module.semantic_context.layers.0.self_attn.in_proj_weight",
+    "module.semantic_context.layers.0.self_attn.in_proj_bias",
+    "module.semantic_context.layers.0.self_attn.out_proj.weight",
+    "module.semantic_context.layers.0.self_attn.out_proj.bias",
+    "module.semantic_context.layers.0.linear1.weight",
+    "module.semantic_context.layers.0.linear1.bias",
+    "module.semantic_context.layers.0.linear2.weight",
+    "module.semantic_context.layers.0.linear2.bias",
+    "module.semantic_context.layers.0.norm1.weight",
+    "module.semantic_context.layers.0.norm1.bias",
+    "module.semantic_context.layers.0.norm2.weight",
+    "module.semantic_context.layers.0.norm2.bias",
+    "module.fusion_gate.0.weight",
+    "module.fusion_gate.0.bias",
+    "module.fusion_gate.1.weight",
+    "module.fusion_gate.1.bias",
+    "module.fusion_gate.3.weight",
+    "module.fusion_gate.3.bias",
+    "module.fusion_refine.0.weight",
+    "module.fusion_refine.0.bias",
+    "module.fusion_refine.1.weight",
+    "module.fusion_refine.1.bias",
+    "module.fusion_refine.4.weight",
+    "module.fusion_refine.4.bias",
+    "module.fusion_refine.5.weight",
+    "module.fusion_refine.5.bias",
+    "module.answer_head.weight",
+    "module.answer_head.bias"
+] 
+[2026-09-19 15:43:09,352]-[trainutils.py line:220]:
+-------------- optimizer info -------------- 
+[2026-09-19 15:43:09,352]-[trainutils.py line:221]:Learning rate: 0.0001 
+[2026-09-19 15:43:09,352]-[trainutils.py line:222]:Betas: (0.9, 0.999) 
+[2026-09-19 15:43:09,352]-[trainutils.py line:223]:Eps: 1e-08 
+[2026-09-19 15:43:09,352]-[trainutils.py line:224]:Weight decay: 0.0002 
+[2026-09-19 15:43:09,384]-[train.py line:102]:
+-------------- training epoch 1 -------------- 
+[2026-09-19 15:43:11,041]-[trainutils.py line:416]:[EST:   36.60m][Process Time:    1.36s]- Epoch: 1 [0000/1330 (  0%)]	Losses: ce_loss-3.9333(3.9333) loss_tacl-0.0000(0.0000) loss_sacl-0.0111(0.0111) loss_event-0.0209(0.0209) loss_evidence-0.0115(0.0115) loss_query_diversity-0.0044(0.0044) loss_position--0.0000(0.0000) total_loss-3.9333(3.9333) 
+[2026-09-19 15:43:46,167]-[trainutils.py line:416]:[EST:    7.46m][Process Time:    0.06s]- Epoch: 1 [0100/1330 (  8%)]	Losses: ce_loss-3.5922(3.6489) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0111) loss_event-0.0174(0.0190) loss_evidence-0.0130(0.0122) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-3.5922(3.6489) 
+[2026-09-19 15:44:19,245]-[trainutils.py line:416]:[EST:    6.54m][Process Time:    0.06s]- Epoch: 1 [0200/1330 ( 15%)]	Losses: ce_loss-2.9708(3.4209) loss_tacl-0.0000(0.0000) loss_sacl-0.0114(0.0112) loss_event-0.0146(0.0176) loss_evidence-0.0117(0.0120) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.9708(3.4209) 
+[2026-09-19 15:44:52,756]-[trainutils.py line:416]:[EST:    5.89m][Process Time:    0.07s]- Epoch: 1 [0300/1330 ( 23%)]	Losses: ce_loss-2.5876(3.2447) loss_tacl-0.0000(0.0000) loss_sacl-0.0113(0.0112) loss_event-0.0135(0.0164) loss_evidence-0.0024(0.0121) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.5876(3.2447) 
+[2026-09-19 15:45:25,654]-[trainutils.py line:416]:[EST:    5.26m][Process Time:    0.07s]- Epoch: 1 [0400/1330 ( 30%)]	Losses: ce_loss-2.6496(3.1065) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0125(0.0154) loss_evidence-0.0067(0.0099) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.6496(3.1065) 
+[2026-09-19 15:45:59,619]-[trainutils.py line:416]:[EST:    4.69m][Process Time:    0.07s]- Epoch: 1 [0500/1330 ( 38%)]	Losses: ce_loss-2.5717(3.0039) loss_tacl-0.0000(0.0000) loss_sacl-0.0113(0.0112) loss_event-0.0124(0.0147) loss_evidence-0.0068(0.0080) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.5717(3.0039) 
+[2026-09-19 15:46:32,626]-[trainutils.py line:416]:[EST:    4.11m][Process Time:    0.06s]- Epoch: 1 [0600/1330 ( 45%)]	Losses: ce_loss-2.8296(2.9255) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0107(0.0141) loss_evidence-0.0096(0.0067) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.8296(2.9255) 
+[2026-09-19 15:47:06,180]-[trainutils.py line:416]:[EST:    3.54m][Process Time:    0.06s]- Epoch: 1 [0700/1330 ( 53%)]	Losses: ce_loss-2.4838(2.8593) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0113(0.0136) loss_evidence-0.0058(0.0057) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.4838(2.8593) 
+[2026-09-19 15:47:40,180]-[trainutils.py line:416]:[EST:    2.98m][Process Time:    0.07s]- Epoch: 1 [0800/1330 ( 60%)]	Losses: ce_loss-2.6185(2.8032) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0092(0.0132) loss_evidence-0.0067(0.0050) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.6185(2.8032) 
+[2026-09-19 15:48:13,378]-[trainutils.py line:416]:[EST:    2.41m][Process Time:    0.07s]- Epoch: 1 [0900/1330 ( 68%)]	Losses: ce_loss-2.0668(2.7441) loss_tacl-0.0000(0.0000) loss_sacl-0.0113(0.0112) loss_event-0.0099(0.0128) loss_evidence-0.0031(0.0044) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.0668(2.7441) 
+[2026-09-19 15:48:47,227]-[trainutils.py line:416]:[EST:    1.85m][Process Time:    0.07s]- Epoch: 1 [1000/1330 ( 75%)]	Losses: ce_loss-2.3313(2.6975) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0092(0.0125) loss_evidence-0.0052(0.0040) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.3313(2.6975) 
+[2026-09-19 15:49:20,952]-[trainutils.py line:416]:[EST:    1.29m][Process Time:    0.06s]- Epoch: 1 [1100/1330 ( 83%)]	Losses: ce_loss-2.2556(2.6526) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0097(0.0122) loss_evidence-0.0031(0.0036) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.2556(2.6526) 
+[2026-09-19 15:49:55,513]-[trainutils.py line:416]:[EST:    0.73m][Process Time:    0.06s]- Epoch: 1 [1200/1330 ( 90%)]	Losses: ce_loss-1.8569(2.6090) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0090(0.0120) loss_evidence-0.0016(0.0033) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-1.8569(2.6090) 
+[2026-09-19 15:50:30,071]-[trainutils.py line:416]:[EST:    0.16m][Process Time:    0.06s]- Epoch: 1 [1300/1330 ( 98%)]	Losses: ce_loss-2.7414(2.5645) loss_tacl-0.0000(0.0000) loss_sacl-0.0112(0.0112) loss_event-0.0104(0.0118) loss_evidence-0.0095(0.0031) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.7414(2.5645) 
+[2026-09-19 15:50:40,577]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.11s]- Epoch: 1 [1330/1330 (100%)]	Losses: ce_loss-1.3388(2.5520) loss_tacl-0.0000(0.0000) loss_sacl-0.0114(0.0112) loss_event-0.0099(0.0117) loss_evidence-0.0000(0.0030) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-1.3388(2.5520) 
+[2026-09-19 15:50:41,810]-[train.py line:106]:
+-------------- validation epoch 1 -------------- 
+[2026-09-19 15:50:42,485]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 15:51:33,812]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 15:51:33,813]-[trainutils.py line:492]:Epoch 1 -           Audio/Counting accuracy: 65.56(335/511) 
+[2026-09-19 15:51:33,813]-[trainutils.py line:492]:Epoch 1 -        Audio/Comparative accuracy: 47.80(141/295) 
+[2026-09-19 15:51:33,813]-[trainutils.py line:497]:Epoch 1 -                    Audio accuracy: 59.06(476/806) 
+[2026-09-19 15:51:33,813]-[trainutils.py line:492]:Epoch 1 -          Visual/Counting accuracy: 55.67(334/600) 
+[2026-09-19 15:51:33,815]-[trainutils.py line:492]:Epoch 1 -          Visual/Location accuracy: 16.80(103/613) 
+[2026-09-19 15:51:33,815]-[trainutils.py line:497]:Epoch 1 -                   Visual accuracy: 36.03(437/1213) 
+[2026-09-19 15:51:33,816]-[trainutils.py line:492]:Epoch 1 - Audio-Visual/Existential accuracy: 78.79(390/495) 
+[2026-09-19 15:51:33,817]-[trainutils.py line:492]:Epoch 1 -    Audio-Visual/Counting accuracy: 42.18(267/633) 
+[2026-09-19 15:51:33,818]-[trainutils.py line:492]:Epoch 1 -    Audio-Visual/Location accuracy: 22.13(102/461) 
+[2026-09-19 15:51:33,818]-[trainutils.py line:492]:Epoch 1 - Audio-Visual/Comparative accuracy: 56.47(310/549) 
+[2026-09-19 15:51:33,819]-[trainutils.py line:492]:Epoch 1 -    Audio-Visual/Temporal accuracy: 0.00(0/411) 
+[2026-09-19 15:51:33,819]-[trainutils.py line:497]:Epoch 1 -             Audio-Visual accuracy: 41.94(1069/2549) 
+[2026-09-19 15:51:33,819]-[trainutils.py line:501]:Epoch 1 -                    Total accuracy: 43.39(1982/4568) 
+[2026-09-19 15:51:33,862]-[train.py line:151]:best model saved at epoch 1 with acc 43.38879159369527 (raw) 
+[2026-09-19 15:51:33,942]-[train.py line:167]:Epoch 1 done with 43.39 and loss 1.93750. 
+[2026-09-19 15:51:33,944]-[train.py line:168]:At epoch1 best acc: 43.39. 
+[2026-09-19 15:51:33,944]-[train.py line:102]:
+-------------- training epoch 2 -------------- 
+[2026-09-19 15:51:34,304]-[trainutils.py line:416]:[EST:    7.93m][Process Time:    0.07s]- Epoch: 2 [0000/1330 (  0%)]	Losses: ce_loss-2.3527(2.3527) loss_tacl-0.0001(0.0001) loss_sacl-0.0224(0.0224) loss_event-0.0089(0.0089) loss_evidence-0.0051(0.0051) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-2.3527(2.3527) 
+[2026-09-19 15:52:08,347]-[trainutils.py line:416]:[EST:    6.98m][Process Time:    0.07s]- Epoch: 2 [0100/1330 (  8%)]	Losses: ce_loss-1.0151(1.5636) loss_tacl-0.0001(0.0001) loss_sacl-0.0216(0.0216) loss_event-0.0106(0.0097) loss_evidence-0.0002(0.0014) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-1.0151(1.5636) 
+[2026-09-19 15:52:41,718]-[trainutils.py line:416]:[EST:    6.34m][Process Time:    0.06s]- Epoch: 2 [0200/1330 ( 15%)]	Losses: ce_loss-0.8215(1.3165) loss_tacl-0.0001(0.0001) loss_sacl-0.0189(0.0208) loss_event-0.0065(0.0090) loss_evidence-0.0000(0.0009) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.8215(1.3165) 
+[2026-09-19 15:53:16,290]-[trainutils.py line:416]:[EST:    5.83m][Process Time:    0.07s]- Epoch: 2 [0300/1330 ( 23%)]	Losses: ce_loss-0.9760(1.2008) loss_tacl-0.0001(0.0001) loss_sacl-0.0172(0.0200) loss_event-0.0058(0.0081) loss_evidence-0.0019(0.0010) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.9760(1.2008) 
+[2026-09-19 15:53:50,163]-[trainutils.py line:416]:[EST:    5.26m][Process Time:    0.08s]- Epoch: 2 [0400/1330 ( 30%)]	Losses: ce_loss-0.9385(1.1321) loss_tacl-0.0001(0.0001) loss_sacl-0.0170(0.0192) loss_event-0.0056(0.0075) loss_evidence-0.0028(0.0011) loss_query_diversity-0.0044(0.0044) loss_position--0.0000(0.0000) total_loss-0.9385(1.1321) 
+[2026-09-19 15:54:23,182]-[trainutils.py line:416]:[EST:    4.67m][Process Time:    0.07s]- Epoch: 2 [0500/1330 ( 38%)]	Losses: ce_loss-0.9482(1.0902) loss_tacl-0.0001(0.0001) loss_sacl-0.0161(0.0187) loss_event-0.0063(0.0072) loss_evidence-0.0024(0.0011) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.9482(1.0902) 
+[2026-09-19 15:54:51,356]-[trainutils.py line:416]:[EST:    3.99m][Process Time:    0.05s]- Epoch: 2 [0600/1330 ( 45%)]	Losses: ce_loss-0.8492(1.0589) loss_tacl-0.0001(0.0001) loss_sacl-0.0147(0.0182) loss_event-0.0039(0.0068) loss_evidence-0.0000(0.0012) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.8492(1.0589) 
+[2026-09-19 15:55:17,638]-[trainutils.py line:416]:[EST:    3.35m][Process Time:    0.05s]- Epoch: 2 [0700/1330 ( 53%)]	Losses: ce_loss-1.0097(1.0269) loss_tacl-0.0001(0.0001) loss_sacl-0.0154(0.0176) loss_event-0.0059(0.0066) loss_evidence-0.0003(0.0012) loss_query_diversity-0.0043(0.0044) loss_position--0.0000(0.0000) total_loss-1.0097(1.0269) 
+[2026-09-19 15:55:49,185]-[trainutils.py line:416]:[EST:    2.81m][Process Time:    0.06s]- Epoch: 2 [0800/1330 ( 60%)]	Losses: ce_loss-1.0189(1.0020) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0172) loss_event-0.0048(0.0064) loss_evidence-0.0000(0.0012) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-1.0189(1.0020) 
+[2026-09-19 15:56:19,849]-[trainutils.py line:416]:[EST:    2.27m][Process Time:    0.06s]- Epoch: 2 [0900/1330 ( 68%)]	Losses: ce_loss-0.7834(0.9797) loss_tacl-0.0001(0.0001) loss_sacl-0.0134(0.0168) loss_event-0.0046(0.0061) loss_evidence-0.0028(0.0011) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.7834(0.9797) 
+[2026-09-19 15:56:52,073]-[trainutils.py line:416]:[EST:    1.74m][Process Time:    0.06s]- Epoch: 2 [1000/1330 ( 75%)]	Losses: ce_loss-1.6087(0.9590) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0164) loss_event-0.0042(0.0060) loss_evidence-0.0025(0.0011) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-1.6087(0.9590) 
+[2026-09-19 15:57:24,107]-[trainutils.py line:416]:[EST:    1.21m][Process Time:    0.07s]- Epoch: 2 [1100/1330 ( 83%)]	Losses: ce_loss-0.8971(0.9444) loss_tacl-0.0001(0.0001) loss_sacl-0.0130(0.0160) loss_event-0.0043(0.0058) loss_evidence-0.0000(0.0010) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.8971(0.9444) 
+[2026-09-19 15:57:55,085]-[trainutils.py line:416]:[EST:    0.68m][Process Time:    0.06s]- Epoch: 2 [1200/1330 ( 90%)]	Losses: ce_loss-0.7377(0.9307) loss_tacl-0.0001(0.0001) loss_sacl-0.0126(0.0157) loss_event-0.0046(0.0057) loss_evidence-0.0000(0.0009) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.7377(0.9307) 
+[2026-09-19 15:58:26,545]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.06s]- Epoch: 2 [1300/1330 ( 98%)]	Losses: ce_loss-0.8804(0.9173) loss_tacl-0.0001(0.0001) loss_sacl-0.0142(0.0155) loss_event-0.0059(0.0056) loss_evidence-0.0013(0.0009) loss_query_diversity-0.0043(0.0044) loss_position-0.0000(0.0000) total_loss-0.8804(0.9173) 
+[2026-09-19 15:58:35,586]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 2 [1330/1330 (100%)]	Losses: ce_loss-0.7514(0.9145) loss_tacl-0.0001(0.0001) loss_sacl-0.0118(0.0154) loss_event-0.0035(0.0056) loss_evidence-0.0013(0.0009) loss_query_diversity-0.0044(0.0044) loss_position-0.0000(0.0000) total_loss-0.7514(0.9145) 
+[2026-09-19 15:58:36,596]-[train.py line:106]:
+-------------- validation epoch 2 -------------- 
+[2026-09-19 15:58:37,101]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 15:59:25,277]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 15:59:25,278]-[trainutils.py line:492]:Epoch 2 -           Audio/Counting accuracy: 75.93(388/511) 
+[2026-09-19 15:59:25,278]-[trainutils.py line:492]:Epoch 2 -        Audio/Comparative accuracy: 62.37(184/295) 
+[2026-09-19 15:59:25,278]-[trainutils.py line:497]:Epoch 2 -                    Audio accuracy: 70.97(572/806) 
+[2026-09-19 15:59:25,278]-[trainutils.py line:492]:Epoch 2 -          Visual/Counting accuracy: 68.67(412/600) 
+[2026-09-19 15:59:25,278]-[trainutils.py line:492]:Epoch 2 -          Visual/Location accuracy: 83.20(510/613) 
+[2026-09-19 15:59:25,278]-[trainutils.py line:497]:Epoch 2 -                   Visual accuracy: 76.01(922/1213) 
+[2026-09-19 15:59:25,280]-[trainutils.py line:492]:Epoch 2 - Audio-Visual/Existential accuracy: 81.62(404/495) 
+[2026-09-19 15:59:25,280]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Counting accuracy: 69.83(442/633) 
+[2026-09-19 15:59:25,280]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Location accuracy: 59.44(274/461) 
+[2026-09-19 15:59:25,281]-[trainutils.py line:492]:Epoch 2 - Audio-Visual/Comparative accuracy: 60.29(331/549) 
+[2026-09-19 15:59:25,281]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Temporal accuracy: 68.37(281/411) 
+[2026-09-19 15:59:25,281]-[trainutils.py line:497]:Epoch 2 -             Audio-Visual accuracy: 67.95(1732/2549) 
+[2026-09-19 15:59:25,281]-[trainutils.py line:501]:Epoch 2 -                    Total accuracy: 70.62(3226/4568) 
+[2026-09-19 15:59:25,815]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:00:12,082]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:00:12,082]-[trainutils.py line:492]:Epoch 2 -           Audio/Counting accuracy: 73.78(377/511) 
+[2026-09-19 16:00:12,083]-[trainutils.py line:492]:Epoch 2 -        Audio/Comparative accuracy: 54.92(162/295) 
+[2026-09-19 16:00:12,083]-[trainutils.py line:497]:Epoch 2 -                    Audio accuracy: 66.87(539/806) 
+[2026-09-19 16:00:12,084]-[trainutils.py line:492]:Epoch 2 -          Visual/Counting accuracy: 66.33(398/600) 
+[2026-09-19 16:00:12,084]-[trainutils.py line:492]:Epoch 2 -          Visual/Location accuracy: 76.35(468/613) 
+[2026-09-19 16:00:12,084]-[trainutils.py line:497]:Epoch 2 -                   Visual accuracy: 71.39(866/1213) 
+[2026-09-19 16:00:12,084]-[trainutils.py line:492]:Epoch 2 - Audio-Visual/Existential accuracy: 80.81(400/495) 
+[2026-09-19 16:00:12,085]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Counting accuracy: 65.40(414/633) 
+[2026-09-19 16:00:12,085]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Location accuracy: 58.35(269/461) 
+[2026-09-19 16:00:12,085]-[trainutils.py line:492]:Epoch 2 - Audio-Visual/Comparative accuracy: 55.19(303/549) 
+[2026-09-19 16:00:12,086]-[trainutils.py line:492]:Epoch 2 -    Audio-Visual/Temporal accuracy: 67.40(277/411) 
+[2026-09-19 16:00:12,086]-[trainutils.py line:497]:Epoch 2 -             Audio-Visual accuracy: 65.24(1663/2549) 
+[2026-09-19 16:00:12,086]-[trainutils.py line:501]:Epoch 2 -                    Total accuracy: 67.16(3068/4568) 
+[2026-09-19 16:00:12,132]-[train.py line:151]:best model saved at epoch 2 with acc 70.6217162872154 (raw) 
+[2026-09-19 16:00:12,200]-[train.py line:167]:Epoch 2 done with 70.62 and loss 0.69141. 
+[2026-09-19 16:00:12,200]-[train.py line:168]:At epoch2 best acc: 70.62. 
+[2026-09-19 16:00:12,201]-[train.py line:102]:
+-------------- training epoch 3 -------------- 
+[2026-09-19 16:00:12,518]-[trainutils.py line:416]:[EST:    6.97m][Process Time:    0.07s]- Epoch: 3 [0000/1330 (  0%)]	Losses: ce_loss-0.7801(0.7801) loss_tacl-0.0001(0.0001) loss_sacl-0.0184(0.0184) loss_event-0.0047(0.0047) loss_evidence-0.0013(0.0013) loss_query_diversity-0.0044(0.0044) loss_position--0.0000(0.0000) total_loss-0.7801(0.7801) 
+[2026-09-19 16:00:43,308]-[trainutils.py line:416]:[EST:    6.31m][Process Time:    0.07s]- Epoch: 3 [0100/1330 (  8%)]	Losses: ce_loss-0.8336(0.6952) loss_tacl-0.0001(0.0001) loss_sacl-0.0184(0.0179) loss_event-0.0050(0.0044) loss_evidence-0.0000(0.0009) loss_query_diversity-0.0043(0.0044) loss_position-0.0000(0.0000) total_loss-0.8336(0.6952) 
+[2026-09-19 16:01:14,362]-[trainutils.py line:416]:[EST:    5.82m][Process Time:    0.07s]- Epoch: 3 [0200/1330 ( 15%)]	Losses: ce_loss-0.5395(0.7002) loss_tacl-0.0001(0.0001) loss_sacl-0.0202(0.0181) loss_event-0.0053(0.0045) loss_evidence-0.0003(0.0008) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5395(0.7002) 
+[2026-09-19 16:01:45,508]-[trainutils.py line:416]:[EST:    5.32m][Process Time:    0.06s]- Epoch: 3 [0300/1330 ( 23%)]	Losses: ce_loss-0.4888(0.7076) loss_tacl-0.0001(0.0001) loss_sacl-0.0183(0.0182) loss_event-0.0049(0.0045) loss_evidence-0.0000(0.0009) loss_query_diversity-0.0043(0.0043) loss_position-0.0000(0.0000) total_loss-0.4888(0.7076) 
+[2026-09-19 16:02:16,190]-[trainutils.py line:416]:[EST:    4.79m][Process Time:    0.06s]- Epoch: 3 [0400/1330 ( 30%)]	Losses: ce_loss-0.7813(0.7037) loss_tacl-0.0001(0.0001) loss_sacl-0.0154(0.0181) loss_event-0.0041(0.0045) loss_evidence-0.0007(0.0008) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.7813(0.7037) 
+[2026-09-19 16:02:47,532]-[trainutils.py line:416]:[EST:    4.28m][Process Time:    0.07s]- Epoch: 3 [0500/1330 ( 38%)]	Losses: ce_loss-0.5241(0.7087) loss_tacl-0.0001(0.0001) loss_sacl-0.0185(0.0179) loss_event-0.0059(0.0045) loss_evidence-0.0000(0.0008) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5241(0.7087) 
+[2026-09-19 16:03:19,849]-[trainutils.py line:416]:[EST:    3.79m][Process Time:    0.06s]- Epoch: 3 [0600/1330 ( 45%)]	Losses: ce_loss-0.6163(0.7093) loss_tacl-0.0001(0.0001) loss_sacl-0.0168(0.0177) loss_event-0.0042(0.0046) loss_evidence-0.0000(0.0009) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.6163(0.7093) 
+[2026-09-19 16:03:52,650]-[trainutils.py line:416]:[EST:    3.30m][Process Time:    0.06s]- Epoch: 3 [0700/1330 ( 53%)]	Losses: ce_loss-0.5936(0.7074) loss_tacl-0.0001(0.0001) loss_sacl-0.0166(0.0176) loss_event-0.0041(0.0046) loss_evidence-0.0016(0.0008) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.5936(0.7074) 
+[2026-09-19 16:04:25,067]-[trainutils.py line:416]:[EST:    2.78m][Process Time:    0.07s]- Epoch: 3 [0800/1330 ( 60%)]	Losses: ce_loss-0.6527(0.7044) loss_tacl-0.0001(0.0001) loss_sacl-0.0171(0.0174) loss_event-0.0046(0.0046) loss_evidence-0.0000(0.0007) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6527(0.7044) 
+[2026-09-19 16:04:56,902]-[trainutils.py line:416]:[EST:    2.26m][Process Time:    0.06s]- Epoch: 3 [0900/1330 ( 68%)]	Losses: ce_loss-0.8437(0.7039) loss_tacl-0.0001(0.0001) loss_sacl-0.0154(0.0173) loss_event-0.0043(0.0045) loss_evidence-0.0000(0.0007) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8437(0.7039) 
+[2026-09-19 16:05:28,402]-[trainutils.py line:416]:[EST:    1.73m][Process Time:    0.06s]- Epoch: 3 [1000/1330 ( 75%)]	Losses: ce_loss-0.8763(0.6988) loss_tacl-0.0001(0.0001) loss_sacl-0.0162(0.0172) loss_event-0.0044(0.0045) loss_evidence-0.0033(0.0007) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8763(0.6988) 
+[2026-09-19 16:05:59,898]-[trainutils.py line:416]:[EST:    1.21m][Process Time:    0.06s]- Epoch: 3 [1100/1330 ( 83%)]	Losses: ce_loss-0.5395(0.6967) loss_tacl-0.0001(0.0001) loss_sacl-0.0144(0.0171) loss_event-0.0042(0.0045) loss_evidence-0.0016(0.0006) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.5395(0.6967) 
+[2026-09-19 16:06:31,007]-[trainutils.py line:416]:[EST:    0.68m][Process Time:    0.06s]- Epoch: 3 [1200/1330 ( 90%)]	Losses: ce_loss-0.5867(0.6939) loss_tacl-0.0001(0.0001) loss_sacl-0.0196(0.0170) loss_event-0.0041(0.0045) loss_evidence-0.0013(0.0006) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5867(0.6939) 
+[2026-09-19 16:07:02,712]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.06s]- Epoch: 3 [1300/1330 ( 98%)]	Losses: ce_loss-0.4827(0.6914) loss_tacl-0.0001(0.0001) loss_sacl-0.0152(0.0170) loss_event-0.0040(0.0044) loss_evidence-0.0000(0.0006) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.4827(0.6914) 
+[2026-09-19 16:07:12,011]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 3 [1330/1330 (100%)]	Losses: ce_loss-0.7894(0.6901) loss_tacl-0.0001(0.0001) loss_sacl-0.0168(0.0170) loss_event-0.0041(0.0044) loss_evidence-0.0000(0.0006) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7894(0.6901) 
+[2026-09-19 16:07:13,054]-[train.py line:106]:
+-------------- validation epoch 3 -------------- 
+[2026-09-19 16:07:13,528]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:08:01,466]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:08:01,466]-[trainutils.py line:492]:Epoch 3 -           Audio/Counting accuracy: 83.17(425/511) 
+[2026-09-19 16:08:01,467]-[trainutils.py line:492]:Epoch 3 -        Audio/Comparative accuracy: 56.95(168/295) 
+[2026-09-19 16:08:01,467]-[trainutils.py line:497]:Epoch 3 -                    Audio accuracy: 73.57(593/806) 
+[2026-09-19 16:08:01,467]-[trainutils.py line:492]:Epoch 3 -          Visual/Counting accuracy: 76.00(456/600) 
+[2026-09-19 16:08:01,468]-[trainutils.py line:492]:Epoch 3 -          Visual/Location accuracy: 82.71(507/613) 
+[2026-09-19 16:08:01,468]-[trainutils.py line:497]:Epoch 3 -                   Visual accuracy: 79.39(963/1213) 
+[2026-09-19 16:08:01,468]-[trainutils.py line:492]:Epoch 3 - Audio-Visual/Existential accuracy: 83.03(411/495) 
+[2026-09-19 16:08:01,469]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Counting accuracy: 70.93(449/633) 
+[2026-09-19 16:08:01,470]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Location accuracy: 65.94(304/461) 
+[2026-09-19 16:08:01,470]-[trainutils.py line:492]:Epoch 3 - Audio-Visual/Comparative accuracy: 56.47(310/549) 
+[2026-09-19 16:08:01,471]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 16:08:01,471]-[trainutils.py line:497]:Epoch 3 -             Audio-Visual accuracy: 69.36(1768/2549) 
+[2026-09-19 16:08:01,471]-[trainutils.py line:501]:Epoch 3 -                    Total accuracy: 72.77(3324/4568) 
+[2026-09-19 16:08:02,016]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:08:48,421]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:08:48,422]-[trainutils.py line:492]:Epoch 3 -           Audio/Counting accuracy: 77.50(396/511) 
+[2026-09-19 16:08:48,422]-[trainutils.py line:492]:Epoch 3 -        Audio/Comparative accuracy: 59.66(176/295) 
+[2026-09-19 16:08:48,423]-[trainutils.py line:497]:Epoch 3 -                    Audio accuracy: 70.97(572/806) 
+[2026-09-19 16:08:48,423]-[trainutils.py line:492]:Epoch 3 -          Visual/Counting accuracy: 69.17(415/600) 
+[2026-09-19 16:08:48,423]-[trainutils.py line:492]:Epoch 3 -          Visual/Location accuracy: 84.18(516/613) 
+[2026-09-19 16:08:48,423]-[trainutils.py line:497]:Epoch 3 -                   Visual accuracy: 76.75(931/1213) 
+[2026-09-19 16:08:48,424]-[trainutils.py line:492]:Epoch 3 - Audio-Visual/Existential accuracy: 82.63(409/495) 
+[2026-09-19 16:08:48,425]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Counting accuracy: 67.77(429/633) 
+[2026-09-19 16:08:48,425]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Location accuracy: 65.51(302/461) 
+[2026-09-19 16:08:48,425]-[trainutils.py line:492]:Epoch 3 - Audio-Visual/Comparative accuracy: 60.84(334/549) 
+[2026-09-19 16:08:48,425]-[trainutils.py line:492]:Epoch 3 -    Audio-Visual/Temporal accuracy: 73.48(302/411) 
+[2026-09-19 16:08:48,426]-[trainutils.py line:497]:Epoch 3 -             Audio-Visual accuracy: 69.67(1776/2549) 
+[2026-09-19 16:08:48,426]-[trainutils.py line:501]:Epoch 3 -                    Total accuracy: 71.78(3279/4568) 
+[2026-09-19 16:08:48,465]-[train.py line:151]:best model saved at epoch 3 with acc 72.76707530647985 (raw) 
+[2026-09-19 16:08:48,528]-[train.py line:167]:Epoch 3 done with 72.77 and loss 0.63672. 
+[2026-09-19 16:08:48,528]-[train.py line:168]:At epoch3 best acc: 72.77. 
+[2026-09-19 16:08:48,528]-[train.py line:102]:
+-------------- training epoch 4 -------------- 
+[2026-09-19 16:08:48,830]-[trainutils.py line:416]:[EST:    6.65m][Process Time:    0.06s]- Epoch: 4 [0000/1330 (  0%)]	Losses: ce_loss-0.5095(0.5095) loss_tacl-0.0001(0.0001) loss_sacl-0.0163(0.0163) loss_event-0.0035(0.0035) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5095(0.5095) 
+[2026-09-19 16:09:20,452]-[trainutils.py line:416]:[EST:    6.47m][Process Time:    0.07s]- Epoch: 4 [0100/1330 (  8%)]	Losses: ce_loss-0.5663(0.5995) loss_tacl-0.0001(0.0001) loss_sacl-0.0178(0.0170) loss_event-0.0053(0.0043) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5663(0.5995) 
+[2026-09-19 16:09:51,087]-[trainutils.py line:416]:[EST:    5.86m][Process Time:    0.05s]- Epoch: 4 [0200/1330 ( 15%)]	Losses: ce_loss-0.5509(0.6009) loss_tacl-0.0001(0.0001) loss_sacl-0.0164(0.0168) loss_event-0.0047(0.0044) loss_evidence-0.0000(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5509(0.6009) 
+[2026-09-19 16:10:17,736]-[trainutils.py line:416]:[EST:    5.08m][Process Time:    0.05s]- Epoch: 4 [0300/1330 ( 23%)]	Losses: ce_loss-0.6195(0.6036) loss_tacl-0.0001(0.0001) loss_sacl-0.0145(0.0166) loss_event-0.0038(0.0043) loss_evidence-0.0007(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6195(0.6036) 
+[2026-09-19 16:10:46,355]-[trainutils.py line:416]:[EST:    4.55m][Process Time:    0.07s]- Epoch: 4 [0400/1330 ( 30%)]	Losses: ce_loss-0.8635(0.6039) loss_tacl-0.0001(0.0001) loss_sacl-0.0153(0.0163) loss_event-0.0046(0.0043) loss_evidence-0.0007(0.0006) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8635(0.6039) 
+[2026-09-19 16:11:17,406]-[trainutils.py line:416]:[EST:    4.11m][Process Time:    0.06s]- Epoch: 4 [0500/1330 ( 38%)]	Losses: ce_loss-0.6156(0.6036) loss_tacl-0.0001(0.0001) loss_sacl-0.0157(0.0162) loss_event-0.0047(0.0044) loss_evidence-0.0000(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6156(0.6036) 
+[2026-09-19 16:11:48,854]-[trainutils.py line:416]:[EST:    3.65m][Process Time:    0.07s]- Epoch: 4 [0600/1330 ( 45%)]	Losses: ce_loss-0.4778(0.6008) loss_tacl-0.0001(0.0001) loss_sacl-0.0162(0.0161) loss_event-0.0038(0.0044) loss_evidence-0.0000(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4778(0.6008) 
+[2026-09-19 16:12:20,835]-[trainutils.py line:416]:[EST:    3.17m][Process Time:    0.08s]- Epoch: 4 [0700/1330 ( 53%)]	Losses: ce_loss-0.9067(0.6018) loss_tacl-0.0001(0.0001) loss_sacl-0.0164(0.0161) loss_event-0.0045(0.0044) loss_evidence-0.0000(0.0005) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.9067(0.6018) 
+[2026-09-19 16:12:52,990]-[trainutils.py line:416]:[EST:    2.69m][Process Time:    0.07s]- Epoch: 4 [0800/1330 ( 60%)]	Losses: ce_loss-0.9311(0.6073) loss_tacl-0.0001(0.0001) loss_sacl-0.0159(0.0161) loss_event-0.0051(0.0044) loss_evidence-0.0001(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.9311(0.6073) 
+[2026-09-19 16:13:24,723]-[trainutils.py line:416]:[EST:    2.19m][Process Time:    0.07s]- Epoch: 4 [0900/1330 ( 68%)]	Losses: ce_loss-0.5813(0.6093) loss_tacl-0.0001(0.0001) loss_sacl-0.0161(0.0160) loss_event-0.0037(0.0044) loss_evidence-0.0009(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5813(0.6093) 
+[2026-09-19 16:13:56,995]-[trainutils.py line:416]:[EST:    1.69m][Process Time:    0.07s]- Epoch: 4 [1000/1330 ( 75%)]	Losses: ce_loss-0.6475(0.6093) loss_tacl-0.0001(0.0001) loss_sacl-0.0148(0.0159) loss_event-0.0042(0.0044) loss_evidence-0.0000(0.0005) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6475(0.6093) 
+[2026-09-19 16:14:30,296]-[trainutils.py line:416]:[EST:    1.18m][Process Time:    0.08s]- Epoch: 4 [1100/1330 ( 83%)]	Losses: ce_loss-0.7916(0.6071) loss_tacl-0.0001(0.0001) loss_sacl-0.0140(0.0157) loss_event-0.0039(0.0043) loss_evidence-0.0005(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7916(0.6071) 
+[2026-09-19 16:15:02,912]-[trainutils.py line:416]:[EST:    0.67m][Process Time:    0.07s]- Epoch: 4 [1200/1330 ( 90%)]	Losses: ce_loss-0.6143(0.6078) loss_tacl-0.0001(0.0001) loss_sacl-0.0130(0.0157) loss_event-0.0035(0.0043) loss_evidence-0.0002(0.0004) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.6143(0.6078) 
+[2026-09-19 16:15:35,536]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.08s]- Epoch: 4 [1300/1330 ( 98%)]	Losses: ce_loss-0.3132(0.6100) loss_tacl-0.0001(0.0001) loss_sacl-0.0140(0.0156) loss_event-0.0035(0.0043) loss_evidence-0.0001(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3132(0.6100) 
+[2026-09-19 16:15:45,037]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 4 [1330/1330 (100%)]	Losses: ce_loss-0.3206(0.6090) loss_tacl-0.0001(0.0001) loss_sacl-0.0158(0.0156) loss_event-0.0039(0.0043) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.3206(0.6090) 
+[2026-09-19 16:15:46,050]-[train.py line:106]:
+-------------- validation epoch 4 -------------- 
+[2026-09-19 16:15:46,529]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:16:34,492]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:16:34,493]-[trainutils.py line:492]:Epoch 4 -           Audio/Counting accuracy: 85.91(439/511) 
+[2026-09-19 16:16:34,493]-[trainutils.py line:492]:Epoch 4 -        Audio/Comparative accuracy: 59.66(176/295) 
+[2026-09-19 16:16:34,494]-[trainutils.py line:497]:Epoch 4 -                    Audio accuracy: 76.30(615/806) 
+[2026-09-19 16:16:34,494]-[trainutils.py line:492]:Epoch 4 -          Visual/Counting accuracy: 78.33(470/600) 
+[2026-09-19 16:16:34,494]-[trainutils.py line:492]:Epoch 4 -          Visual/Location accuracy: 84.18(516/613) 
+[2026-09-19 16:16:34,494]-[trainutils.py line:497]:Epoch 4 -                   Visual accuracy: 81.29(986/1213) 
+[2026-09-19 16:16:34,494]-[trainutils.py line:492]:Epoch 4 - Audio-Visual/Existential accuracy: 84.85(420/495) 
+[2026-09-19 16:16:34,495]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Counting accuracy: 73.46(465/633) 
+[2026-09-19 16:16:34,495]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Location accuracy: 64.21(296/461) 
+[2026-09-19 16:16:34,495]-[trainutils.py line:492]:Epoch 4 - Audio-Visual/Comparative accuracy: 60.47(332/549) 
+[2026-09-19 16:16:34,495]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Temporal accuracy: 70.56(290/411) 
+[2026-09-19 16:16:34,497]-[trainutils.py line:497]:Epoch 4 -             Audio-Visual accuracy: 70.73(1803/2549) 
+[2026-09-19 16:16:34,497]-[trainutils.py line:501]:Epoch 4 -                    Total accuracy: 74.52(3404/4568) 
+[2026-09-19 16:16:35,046]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:17:23,619]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:17:23,619]-[trainutils.py line:492]:Epoch 4 -           Audio/Counting accuracy: 82.97(424/511) 
+[2026-09-19 16:17:23,620]-[trainutils.py line:492]:Epoch 4 -        Audio/Comparative accuracy: 60.34(178/295) 
+[2026-09-19 16:17:23,621]-[trainutils.py line:497]:Epoch 4 -                    Audio accuracy: 74.69(602/806) 
+[2026-09-19 16:17:23,622]-[trainutils.py line:492]:Epoch 4 -          Visual/Counting accuracy: 75.33(452/600) 
+[2026-09-19 16:17:23,622]-[trainutils.py line:492]:Epoch 4 -          Visual/Location accuracy: 84.83(520/613) 
+[2026-09-19 16:17:23,622]-[trainutils.py line:497]:Epoch 4 -                   Visual accuracy: 80.13(972/1213) 
+[2026-09-19 16:17:23,623]-[trainutils.py line:492]:Epoch 4 - Audio-Visual/Existential accuracy: 83.64(414/495) 
+[2026-09-19 16:17:23,623]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Counting accuracy: 72.83(461/633) 
+[2026-09-19 16:17:23,623]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Location accuracy: 66.81(308/461) 
+[2026-09-19 16:17:23,624]-[trainutils.py line:492]:Epoch 4 - Audio-Visual/Comparative accuracy: 62.84(345/549) 
+[2026-09-19 16:17:23,624]-[trainutils.py line:492]:Epoch 4 -    Audio-Visual/Temporal accuracy: 74.70(307/411) 
+[2026-09-19 16:17:23,624]-[trainutils.py line:497]:Epoch 4 -             Audio-Visual accuracy: 71.99(1835/2549) 
+[2026-09-19 16:17:23,624]-[trainutils.py line:501]:Epoch 4 -                    Total accuracy: 74.63(3409/4568) 
+[2026-09-19 16:17:23,679]-[train.py line:151]:best model saved at epoch 4 with acc 74.62784588441332 (ema) 
+[2026-09-19 16:17:23,747]-[train.py line:167]:Epoch 4 done with 74.63 and loss 0.59766. 
+[2026-09-19 16:17:23,747]-[train.py line:168]:At epoch4 best acc: 74.63. 
+[2026-09-19 16:17:23,747]-[train.py line:102]:
+-------------- training epoch 5 -------------- 
+[2026-09-19 16:17:24,072]-[trainutils.py line:416]:[EST:    7.18m][Process Time:    0.07s]- Epoch: 5 [0000/1330 (  0%)]	Losses: ce_loss-0.3084(0.3084) loss_tacl-0.0001(0.0001) loss_sacl-0.0158(0.0158) loss_event-0.0039(0.0039) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3084(0.3084) 
+[2026-09-19 16:17:56,957]-[trainutils.py line:416]:[EST:    6.73m][Process Time:    0.07s]- Epoch: 5 [0100/1330 (  8%)]	Losses: ce_loss-0.5220(0.5016) loss_tacl-0.0001(0.0001) loss_sacl-0.0120(0.0149) loss_event-0.0031(0.0041) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5220(0.5016) 
+[2026-09-19 16:18:29,780]-[trainutils.py line:416]:[EST:    6.18m][Process Time:    0.07s]- Epoch: 5 [0200/1330 ( 15%)]	Losses: ce_loss-0.5730(0.5183) loss_tacl-0.0001(0.0001) loss_sacl-0.0159(0.0151) loss_event-0.0042(0.0043) loss_evidence-0.0008(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5730(0.5183) 
+[2026-09-19 16:18:54,955]-[trainutils.py line:416]:[EST:    5.20m][Process Time:    0.04s]- Epoch: 5 [0300/1330 ( 23%)]	Losses: ce_loss-0.5836(0.5315) loss_tacl-0.0001(0.0001) loss_sacl-0.0143(0.0150) loss_event-0.0041(0.0043) loss_evidence-0.0016(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5836(0.5315) 
+[2026-09-19 16:19:16,053]-[trainutils.py line:416]:[EST:    4.34m][Process Time:    0.06s]- Epoch: 5 [0400/1330 ( 30%)]	Losses: ce_loss-0.5340(0.5301) loss_tacl-0.0001(0.0001) loss_sacl-0.0147(0.0150) loss_event-0.0039(0.0043) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5340(0.5301) 
+[2026-09-19 16:19:38,363]-[trainutils.py line:416]:[EST:    3.71m][Process Time:    0.05s]- Epoch: 5 [0500/1330 ( 38%)]	Losses: ce_loss-0.9022(0.5337) loss_tacl-0.0001(0.0001) loss_sacl-0.0142(0.0149) loss_event-0.0047(0.0043) loss_evidence-0.0024(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.9022(0.5337) 
+[2026-09-19 16:20:05,064]-[trainutils.py line:416]:[EST:    3.26m][Process Time:    0.06s]- Epoch: 5 [0600/1330 ( 45%)]	Losses: ce_loss-0.6408(0.5399) loss_tacl-0.0001(0.0001) loss_sacl-0.0143(0.0148) loss_event-0.0040(0.0044) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6408(0.5399) 
+[2026-09-19 16:20:34,806]-[trainutils.py line:416]:[EST:    2.86m][Process Time:    0.06s]- Epoch: 5 [0700/1330 ( 53%)]	Losses: ce_loss-0.3948(0.5415) loss_tacl-0.0001(0.0001) loss_sacl-0.0147(0.0147) loss_event-0.0044(0.0044) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3948(0.5415) 
+[2026-09-19 16:21:06,368]-[trainutils.py line:416]:[EST:    2.45m][Process Time:    0.06s]- Epoch: 5 [0800/1330 ( 60%)]	Losses: ce_loss-0.7227(0.5427) loss_tacl-0.0001(0.0001) loss_sacl-0.0134(0.0147) loss_event-0.0047(0.0044) loss_evidence-0.0011(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7227(0.5427) 
+[2026-09-19 16:21:38,741]-[trainutils.py line:416]:[EST:    2.02m][Process Time:    0.08s]- Epoch: 5 [0900/1330 ( 68%)]	Losses: ce_loss-0.5036(0.5424) loss_tacl-0.0001(0.0001) loss_sacl-0.0145(0.0147) loss_event-0.0041(0.0044) loss_evidence-0.0069(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5036(0.5424) 
+[2026-09-19 16:22:10,945]-[trainutils.py line:416]:[EST:    1.57m][Process Time:    0.06s]- Epoch: 5 [1000/1330 ( 75%)]	Losses: ce_loss-0.5945(0.5438) loss_tacl-0.0001(0.0001) loss_sacl-0.0141(0.0146) loss_event-0.0047(0.0044) loss_evidence-0.0008(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5945(0.5438) 
+[2026-09-19 16:22:43,162]-[trainutils.py line:416]:[EST:    1.11m][Process Time:    0.07s]- Epoch: 5 [1100/1330 ( 83%)]	Losses: ce_loss-0.8904(0.5457) loss_tacl-0.0001(0.0001) loss_sacl-0.0150(0.0146) loss_event-0.0049(0.0044) loss_evidence-0.0022(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8904(0.5457) 
+[2026-09-19 16:23:15,190]-[trainutils.py line:416]:[EST:    0.63m][Process Time:    0.06s]- Epoch: 5 [1200/1330 ( 90%)]	Losses: ce_loss-0.5401(0.5468) loss_tacl-0.0001(0.0001) loss_sacl-0.0147(0.0146) loss_event-0.0050(0.0044) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5401(0.5468) 
+[2026-09-19 16:23:46,526]-[trainutils.py line:416]:[EST:    0.14m][Process Time:    0.07s]- Epoch: 5 [1300/1330 ( 98%)]	Losses: ce_loss-0.6837(0.5471) loss_tacl-0.0001(0.0001) loss_sacl-0.0146(0.0146) loss_event-0.0035(0.0044) loss_evidence-0.0006(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6837(0.5471) 
+[2026-09-19 16:23:55,955]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.11s]- Epoch: 5 [1330/1330 (100%)]	Losses: ce_loss-0.8832(0.5478) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0146) loss_event-0.0026(0.0044) loss_evidence-0.0000(0.0004) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8832(0.5478) 
+[2026-09-19 16:23:58,534]-[train.py line:106]:
+-------------- validation epoch 5 -------------- 
+[2026-09-19 16:23:59,245]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:24:47,190]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:24:47,193]-[trainutils.py line:492]:Epoch 5 -           Audio/Counting accuracy: 85.32(436/511) 
+[2026-09-19 16:24:47,193]-[trainutils.py line:492]:Epoch 5 -        Audio/Comparative accuracy: 59.66(176/295) 
+[2026-09-19 16:24:47,194]-[trainutils.py line:497]:Epoch 5 -                    Audio accuracy: 75.93(612/806) 
+[2026-09-19 16:24:47,194]-[trainutils.py line:492]:Epoch 5 -          Visual/Counting accuracy: 76.83(461/600) 
+[2026-09-19 16:24:47,194]-[trainutils.py line:492]:Epoch 5 -          Visual/Location accuracy: 85.81(526/613) 
+[2026-09-19 16:24:47,194]-[trainutils.py line:497]:Epoch 5 -                   Visual accuracy: 81.37(987/1213) 
+[2026-09-19 16:24:47,195]-[trainutils.py line:492]:Epoch 5 - Audio-Visual/Existential accuracy: 83.64(414/495) 
+[2026-09-19 16:24:47,195]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Counting accuracy: 75.04(475/633) 
+[2026-09-19 16:24:47,195]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Location accuracy: 63.77(294/461) 
+[2026-09-19 16:24:47,195]-[trainutils.py line:492]:Epoch 5 - Audio-Visual/Comparative accuracy: 60.66(333/549) 
+[2026-09-19 16:24:47,196]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Temporal accuracy: 68.37(281/411) 
+[2026-09-19 16:24:47,196]-[trainutils.py line:497]:Epoch 5 -             Audio-Visual accuracy: 70.50(1797/2549) 
+[2026-09-19 16:24:47,196]-[trainutils.py line:501]:Epoch 5 -                    Total accuracy: 74.34(3396/4568) 
+[2026-09-19 16:24:47,715]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:25:37,896]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:25:37,897]-[trainutils.py line:492]:Epoch 5 -           Audio/Counting accuracy: 85.32(436/511) 
+[2026-09-19 16:25:37,897]-[trainutils.py line:492]:Epoch 5 -        Audio/Comparative accuracy: 61.69(182/295) 
+[2026-09-19 16:25:37,897]-[trainutils.py line:497]:Epoch 5 -                    Audio accuracy: 76.67(618/806) 
+[2026-09-19 16:25:37,898]-[trainutils.py line:492]:Epoch 5 -          Visual/Counting accuracy: 79.00(474/600) 
+[2026-09-19 16:25:37,898]-[trainutils.py line:492]:Epoch 5 -          Visual/Location accuracy: 85.48(524/613) 
+[2026-09-19 16:25:37,898]-[trainutils.py line:497]:Epoch 5 -                   Visual accuracy: 82.28(998/1213) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:492]:Epoch 5 - Audio-Visual/Existential accuracy: 83.84(415/495) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Counting accuracy: 74.88(474/633) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Location accuracy: 67.03(309/461) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:492]:Epoch 5 - Audio-Visual/Comparative accuracy: 63.21(347/549) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:492]:Epoch 5 -    Audio-Visual/Temporal accuracy: 74.45(306/411) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:497]:Epoch 5 -             Audio-Visual accuracy: 72.62(1851/2549) 
+[2026-09-19 16:25:37,900]-[trainutils.py line:501]:Epoch 5 -                    Total accuracy: 75.90(3467/4568) 
+[2026-09-19 16:25:38,008]-[train.py line:151]:best model saved at epoch 5 with acc 75.89754816112084 (ema) 
+[2026-09-19 16:25:38,126]-[train.py line:167]:Epoch 5 done with 75.90 and loss 0.57031. 
+[2026-09-19 16:25:38,126]-[train.py line:168]:At epoch5 best acc: 75.90. 
+[2026-09-19 16:25:38,127]-[train.py line:102]:
+-------------- training epoch 6 -------------- 
+[2026-09-19 16:25:38,451]-[trainutils.py line:416]:[EST:    7.06m][Process Time:    0.07s]- Epoch: 6 [0000/1330 (  0%)]	Losses: ce_loss-0.5323(0.5323) loss_tacl-0.0001(0.0001) loss_sacl-0.0133(0.0133) loss_event-0.0044(0.0044) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5323(0.5323) 
+[2026-09-19 16:26:11,073]-[trainutils.py line:416]:[EST:    6.68m][Process Time:    0.07s]- Epoch: 6 [0100/1330 (  8%)]	Losses: ce_loss-0.5602(0.5244) loss_tacl-0.0001(0.0001) loss_sacl-0.0137(0.0146) loss_event-0.0039(0.0044) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5602(0.5244) 
+[2026-09-19 16:26:43,547]-[trainutils.py line:416]:[EST:    6.12m][Process Time:    0.07s]- Epoch: 6 [0200/1330 ( 15%)]	Losses: ce_loss-0.4444(0.5022) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0145) loss_event-0.0043(0.0043) loss_evidence-0.0019(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4444(0.5022) 
+[2026-09-19 16:27:15,328]-[trainutils.py line:416]:[EST:    5.54m][Process Time:    0.06s]- Epoch: 6 [0300/1330 ( 23%)]	Losses: ce_loss-0.3274(0.4903) loss_tacl-0.0001(0.0001) loss_sacl-0.0165(0.0145) loss_event-0.0058(0.0044) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3274(0.4903) 
+[2026-09-19 16:27:49,802]-[trainutils.py line:416]:[EST:    5.08m][Process Time:    0.06s]- Epoch: 6 [0400/1330 ( 30%)]	Losses: ce_loss-0.3907(0.4896) loss_tacl-0.0001(0.0001) loss_sacl-0.0127(0.0144) loss_event-0.0041(0.0044) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3907(0.4896) 
+[2026-09-19 16:28:21,961]-[trainutils.py line:416]:[EST:    4.52m][Process Time:    0.07s]- Epoch: 6 [0500/1330 ( 38%)]	Losses: ce_loss-0.8993(0.4893) loss_tacl-0.0001(0.0001) loss_sacl-0.0123(0.0144) loss_event-0.0036(0.0044) loss_evidence-0.0039(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.8993(0.4893) 
+[2026-09-19 16:28:52,631]-[trainutils.py line:416]:[EST:    3.93m][Process Time:    0.06s]- Epoch: 6 [0600/1330 ( 45%)]	Losses: ce_loss-0.3639(0.4883) loss_tacl-0.0001(0.0001) loss_sacl-0.0141(0.0143) loss_event-0.0051(0.0044) loss_evidence-0.0002(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3639(0.4883) 
+[2026-09-19 16:29:23,018]-[trainutils.py line:416]:[EST:    3.36m][Process Time:    0.07s]- Epoch: 6 [0700/1330 ( 53%)]	Losses: ce_loss-0.7405(0.4879) loss_tacl-0.0001(0.0001) loss_sacl-0.0158(0.0142) loss_event-0.0054(0.0044) loss_evidence-0.0005(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7405(0.4879) 
+[2026-09-19 16:29:53,972]-[trainutils.py line:416]:[EST:    2.82m][Process Time:    0.06s]- Epoch: 6 [0800/1330 ( 60%)]	Losses: ce_loss-0.7504(0.4904) loss_tacl-0.0001(0.0001) loss_sacl-0.0139(0.0143) loss_event-0.0045(0.0044) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7504(0.4904) 
+[2026-09-19 16:30:25,394]-[trainutils.py line:416]:[EST:    2.28m][Process Time:    0.06s]- Epoch: 6 [0900/1330 ( 68%)]	Losses: ce_loss-0.3559(0.4900) loss_tacl-0.0001(0.0001) loss_sacl-0.0150(0.0143) loss_event-0.0049(0.0045) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3559(0.4900) 
+[2026-09-19 16:30:56,363]-[trainutils.py line:416]:[EST:    1.74m][Process Time:    0.07s]- Epoch: 6 [1000/1330 ( 75%)]	Losses: ce_loss-0.7446(0.4901) loss_tacl-0.0001(0.0001) loss_sacl-0.0142(0.0142) loss_event-0.0042(0.0045) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7446(0.4901) 
+[2026-09-19 16:31:28,448]-[trainutils.py line:416]:[EST:    1.21m][Process Time:    0.06s]- Epoch: 6 [1100/1330 ( 83%)]	Losses: ce_loss-0.3854(0.4927) loss_tacl-0.0001(0.0001) loss_sacl-0.0120(0.0141) loss_event-0.0032(0.0045) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.3854(0.4927) 
+[2026-09-19 16:31:59,358]-[trainutils.py line:416]:[EST:    0.68m][Process Time:    0.06s]- Epoch: 6 [1200/1330 ( 90%)]	Losses: ce_loss-0.4233(0.4940) loss_tacl-0.0001(0.0001) loss_sacl-0.0117(0.0141) loss_event-0.0038(0.0044) loss_evidence-0.0003(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4233(0.4940) 
+[2026-09-19 16:32:29,586]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.06s]- Epoch: 6 [1300/1330 ( 98%)]	Losses: ce_loss-0.7899(0.4961) loss_tacl-0.0001(0.0001) loss_sacl-0.0134(0.0141) loss_event-0.0042(0.0044) loss_evidence-0.0007(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7899(0.4961) 
+[2026-09-19 16:32:38,319]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 6 [1330/1330 (100%)]	Losses: ce_loss-0.5881(0.4968) loss_tacl-0.0001(0.0001) loss_sacl-0.0104(0.0140) loss_event-0.0026(0.0044) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.5881(0.4968) 
+[2026-09-19 16:32:39,308]-[train.py line:106]:
+-------------- validation epoch 6 -------------- 
+[2026-09-19 16:32:39,735]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:33:26,702]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:33:26,703]-[trainutils.py line:492]:Epoch 6 -           Audio/Counting accuracy: 85.13(435/511) 
+[2026-09-19 16:33:26,703]-[trainutils.py line:492]:Epoch 6 -        Audio/Comparative accuracy: 57.63(170/295) 
+[2026-09-19 16:33:26,703]-[trainutils.py line:497]:Epoch 6 -                    Audio accuracy: 75.06(605/806) 
+[2026-09-19 16:33:26,703]-[trainutils.py line:492]:Epoch 6 -          Visual/Counting accuracy: 79.33(476/600) 
+[2026-09-19 16:33:26,703]-[trainutils.py line:492]:Epoch 6 -          Visual/Location accuracy: 86.30(529/613) 
+[2026-09-19 16:33:26,703]-[trainutils.py line:497]:Epoch 6 -                   Visual accuracy: 82.85(1005/1213) 
+[2026-09-19 16:33:26,705]-[trainutils.py line:492]:Epoch 6 - Audio-Visual/Existential accuracy: 84.44(418/495) 
+[2026-09-19 16:33:26,705]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Counting accuracy: 77.73(492/633) 
+[2026-09-19 16:33:26,706]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Location accuracy: 66.38(306/461) 
+[2026-09-19 16:33:26,706]-[trainutils.py line:492]:Epoch 6 - Audio-Visual/Comparative accuracy: 59.02(324/549) 
+[2026-09-19 16:33:26,706]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Temporal accuracy: 71.29(293/411) 
+[2026-09-19 16:33:26,706]-[trainutils.py line:497]:Epoch 6 -             Audio-Visual accuracy: 71.91(1833/2549) 
+[2026-09-19 16:33:26,706]-[trainutils.py line:501]:Epoch 6 -                    Total accuracy: 75.37(3443/4568) 
+[2026-09-19 16:33:27,211]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:34:13,486]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:34:13,487]-[trainutils.py line:492]:Epoch 6 -           Audio/Counting accuracy: 86.11(440/511) 
+[2026-09-19 16:34:13,487]-[trainutils.py line:492]:Epoch 6 -        Audio/Comparative accuracy: 62.71(185/295) 
+[2026-09-19 16:34:13,487]-[trainutils.py line:497]:Epoch 6 -                    Audio accuracy: 77.54(625/806) 
+[2026-09-19 16:34:13,488]-[trainutils.py line:492]:Epoch 6 -          Visual/Counting accuracy: 80.83(485/600) 
+[2026-09-19 16:34:13,488]-[trainutils.py line:492]:Epoch 6 -          Visual/Location accuracy: 86.95(533/613) 
+[2026-09-19 16:34:13,488]-[trainutils.py line:497]:Epoch 6 -                   Visual accuracy: 83.92(1018/1213) 
+[2026-09-19 16:34:13,489]-[trainutils.py line:492]:Epoch 6 - Audio-Visual/Existential accuracy: 83.84(415/495) 
+[2026-09-19 16:34:13,489]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Counting accuracy: 76.78(486/633) 
+[2026-09-19 16:34:13,489]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Location accuracy: 67.46(311/461) 
+[2026-09-19 16:34:13,489]-[trainutils.py line:492]:Epoch 6 - Audio-Visual/Comparative accuracy: 63.02(346/549) 
+[2026-09-19 16:34:13,489]-[trainutils.py line:492]:Epoch 6 -    Audio-Visual/Temporal accuracy: 74.94(308/411) 
+[2026-09-19 16:34:13,491]-[trainutils.py line:497]:Epoch 6 -             Audio-Visual accuracy: 73.21(1866/2549) 
+[2026-09-19 16:34:13,491]-[trainutils.py line:501]:Epoch 6 -                    Total accuracy: 76.82(3509/4568) 
+[2026-09-19 16:34:13,587]-[train.py line:151]:best model saved at epoch 6 with acc 76.81698774080562 (ema) 
+[2026-09-19 16:34:13,649]-[train.py line:167]:Epoch 6 done with 76.82 and loss 0.54297. 
+[2026-09-19 16:34:13,649]-[train.py line:168]:At epoch6 best acc: 76.82. 
+[2026-09-19 16:34:13,649]-[train.py line:102]:
+-------------- training epoch 7 -------------- 
+[2026-09-19 16:34:13,978]-[trainutils.py line:416]:[EST:    7.21m][Process Time:    0.07s]- Epoch: 7 [0000/1330 (  0%)]	Losses: ce_loss-0.4592(0.4592) loss_tacl-0.0001(0.0001) loss_sacl-0.0126(0.0126) loss_event-0.0036(0.0036) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4592(0.4592) 
+[2026-09-19 16:34:45,605]-[trainutils.py line:416]:[EST:    6.48m][Process Time:    0.06s]- Epoch: 7 [0100/1330 (  8%)]	Losses: ce_loss-0.4052(0.4434) loss_tacl-0.0001(0.0001) loss_sacl-0.0136(0.0134) loss_event-0.0047(0.0045) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4052(0.4434) 
+[2026-09-19 16:35:17,702]-[trainutils.py line:416]:[EST:    6.00m][Process Time:    0.06s]- Epoch: 7 [0200/1330 ( 15%)]	Losses: ce_loss-0.3946(0.4518) loss_tacl-0.0001(0.0001) loss_sacl-0.0125(0.0136) loss_event-0.0047(0.0046) loss_evidence-0.0005(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3946(0.4518) 
+[2026-09-19 16:35:50,850]-[trainutils.py line:416]:[EST:    5.54m][Process Time:    0.07s]- Epoch: 7 [0300/1330 ( 23%)]	Losses: ce_loss-0.3844(0.4464) loss_tacl-0.0001(0.0001) loss_sacl-0.0140(0.0137) loss_event-0.0047(0.0046) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3844(0.4464) 
+[2026-09-19 16:36:22,758]-[trainutils.py line:416]:[EST:    4.98m][Process Time:    0.07s]- Epoch: 7 [0400/1330 ( 30%)]	Losses: ce_loss-0.4809(0.4502) loss_tacl-0.0001(0.0001) loss_sacl-0.0126(0.0136) loss_event-0.0047(0.0046) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4809(0.4502) 
+[2026-09-19 16:36:52,692]-[trainutils.py line:416]:[EST:    4.39m][Process Time:    0.06s]- Epoch: 7 [0500/1330 ( 38%)]	Losses: ce_loss-0.4405(0.4481) loss_tacl-0.0001(0.0001) loss_sacl-0.0155(0.0135) loss_event-0.0042(0.0046) loss_evidence-0.0016(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4405(0.4481) 
+[2026-09-19 16:37:23,104]-[trainutils.py line:416]:[EST:    3.83m][Process Time:    0.06s]- Epoch: 7 [0600/1330 ( 45%)]	Losses: ce_loss-0.3258(0.4478) loss_tacl-0.0001(0.0001) loss_sacl-0.0118(0.0135) loss_event-0.0040(0.0047) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3258(0.4478) 
+[2026-09-19 16:37:54,064]-[trainutils.py line:416]:[EST:    3.30m][Process Time:    0.06s]- Epoch: 7 [0700/1330 ( 53%)]	Losses: ce_loss-0.3958(0.4467) loss_tacl-0.0001(0.0001) loss_sacl-0.0126(0.0135) loss_event-0.0037(0.0046) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3958(0.4467) 
+[2026-09-19 16:38:25,515]-[trainutils.py line:416]:[EST:    2.77m][Process Time:    0.06s]- Epoch: 7 [0800/1330 ( 60%)]	Losses: ce_loss-0.3184(0.4473) loss_tacl-0.0001(0.0001) loss_sacl-0.0136(0.0135) loss_event-0.0044(0.0047) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3184(0.4473) 
+[2026-09-19 16:38:54,196]-[trainutils.py line:416]:[EST:    2.23m][Process Time:    0.06s]- Epoch: 7 [0900/1330 ( 68%)]	Losses: ce_loss-0.4870(0.4506) loss_tacl-0.0001(0.0001) loss_sacl-0.0130(0.0135) loss_event-0.0052(0.0047) loss_evidence-0.0004(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4870(0.4506) 
+[2026-09-19 16:39:24,571]-[trainutils.py line:416]:[EST:    1.70m][Process Time:    0.07s]- Epoch: 7 [1000/1330 ( 75%)]	Losses: ce_loss-0.3476(0.4500) loss_tacl-0.0001(0.0001) loss_sacl-0.0141(0.0134) loss_event-0.0045(0.0047) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3476(0.4500) 
+[2026-09-19 16:39:56,174]-[trainutils.py line:416]:[EST:    1.19m][Process Time:    0.06s]- Epoch: 7 [1100/1330 ( 83%)]	Losses: ce_loss-0.2709(0.4479) loss_tacl-0.0001(0.0001) loss_sacl-0.0134(0.0135) loss_event-0.0055(0.0047) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2709(0.4479) 
+[2026-09-19 16:40:27,138]-[trainutils.py line:416]:[EST:    0.67m][Process Time:    0.07s]- Epoch: 7 [1200/1330 ( 90%)]	Losses: ce_loss-0.5059(0.4471) loss_tacl-0.0001(0.0001) loss_sacl-0.0142(0.0134) loss_event-0.0056(0.0047) loss_evidence-0.0007(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5059(0.4471) 
+[2026-09-19 16:40:57,365]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.07s]- Epoch: 7 [1300/1330 ( 98%)]	Losses: ce_loss-0.3721(0.4473) loss_tacl-0.0001(0.0001) loss_sacl-0.0138(0.0134) loss_event-0.0055(0.0047) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3721(0.4473) 
+[2026-09-19 16:41:06,386]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 7 [1330/1330 (100%)]	Losses: ce_loss-0.2792(0.4475) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0134) loss_event-0.0067(0.0047) loss_evidence-0.0000(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2792(0.4475) 
+[2026-09-19 16:41:07,406]-[train.py line:106]:
+-------------- validation epoch 7 -------------- 
+[2026-09-19 16:41:07,873]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:41:52,924]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:41:52,926]-[trainutils.py line:492]:Epoch 7 -           Audio/Counting accuracy: 84.74(433/511) 
+[2026-09-19 16:41:52,926]-[trainutils.py line:492]:Epoch 7 -        Audio/Comparative accuracy: 62.03(183/295) 
+[2026-09-19 16:41:52,928]-[trainutils.py line:497]:Epoch 7 -                    Audio accuracy: 76.43(616/806) 
+[2026-09-19 16:41:52,929]-[trainutils.py line:492]:Epoch 7 -          Visual/Counting accuracy: 81.00(486/600) 
+[2026-09-19 16:41:52,929]-[trainutils.py line:492]:Epoch 7 -          Visual/Location accuracy: 85.81(526/613) 
+[2026-09-19 16:41:52,929]-[trainutils.py line:497]:Epoch 7 -                   Visual accuracy: 83.43(1012/1213) 
+[2026-09-19 16:41:52,929]-[trainutils.py line:492]:Epoch 7 - Audio-Visual/Existential accuracy: 83.84(415/495) 
+[2026-09-19 16:41:52,931]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Counting accuracy: 79.62(504/633) 
+[2026-09-19 16:41:52,931]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Location accuracy: 68.55(316/461) 
+[2026-09-19 16:41:52,932]-[trainutils.py line:492]:Epoch 7 - Audio-Visual/Comparative accuracy: 61.02(335/549) 
+[2026-09-19 16:41:52,932]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Temporal accuracy: 74.70(307/411) 
+[2026-09-19 16:41:52,932]-[trainutils.py line:497]:Epoch 7 -             Audio-Visual accuracy: 73.64(1877/2549) 
+[2026-09-19 16:41:52,932]-[trainutils.py line:501]:Epoch 7 -                    Total accuracy: 76.73(3505/4568) 
+[2026-09-19 16:41:53,450]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:42:39,379]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:42:39,380]-[trainutils.py line:492]:Epoch 7 -           Audio/Counting accuracy: 87.08(445/511) 
+[2026-09-19 16:42:39,380]-[trainutils.py line:492]:Epoch 7 -        Audio/Comparative accuracy: 63.05(186/295) 
+[2026-09-19 16:42:39,381]-[trainutils.py line:497]:Epoch 7 -                    Audio accuracy: 78.29(631/806) 
+[2026-09-19 16:42:39,381]-[trainutils.py line:492]:Epoch 7 -          Visual/Counting accuracy: 83.50(501/600) 
+[2026-09-19 16:42:39,381]-[trainutils.py line:492]:Epoch 7 -          Visual/Location accuracy: 87.60(537/613) 
+[2026-09-19 16:42:39,383]-[trainutils.py line:497]:Epoch 7 -                   Visual accuracy: 85.57(1038/1213) 
+[2026-09-19 16:42:39,383]-[trainutils.py line:492]:Epoch 7 - Audio-Visual/Existential accuracy: 84.24(417/495) 
+[2026-09-19 16:42:39,383]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Counting accuracy: 79.94(506/633) 
+[2026-09-19 16:42:39,384]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Location accuracy: 67.68(312/461) 
+[2026-09-19 16:42:39,384]-[trainutils.py line:492]:Epoch 7 - Audio-Visual/Comparative accuracy: 62.84(345/549) 
+[2026-09-19 16:42:39,384]-[trainutils.py line:492]:Epoch 7 -    Audio-Visual/Temporal accuracy: 71.78(295/411) 
+[2026-09-19 16:42:39,384]-[trainutils.py line:497]:Epoch 7 -             Audio-Visual accuracy: 73.56(1875/2549) 
+[2026-09-19 16:42:39,384]-[trainutils.py line:501]:Epoch 7 -                    Total accuracy: 77.58(3544/4568) 
+[2026-09-19 16:42:39,442]-[train.py line:151]:best model saved at epoch 7 with acc 77.5831873905429 (ema) 
+[2026-09-19 16:42:39,504]-[train.py line:167]:Epoch 7 done with 77.58 and loss 0.53125. 
+[2026-09-19 16:42:39,504]-[train.py line:168]:At epoch7 best acc: 77.58. 
+[2026-09-19 16:42:39,505]-[train.py line:102]:
+-------------- training epoch 8 -------------- 
+[2026-09-19 16:42:39,822]-[trainutils.py line:416]:[EST:    6.93m][Process Time:    0.06s]- Epoch: 8 [0000/1330 (  0%)]	Losses: ce_loss-0.3716(0.3716) loss_tacl-0.0001(0.0001) loss_sacl-0.0134(0.0134) loss_event-0.0055(0.0055) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3716(0.3716) 
+[2026-09-19 16:43:10,280]-[trainutils.py line:416]:[EST:    6.24m][Process Time:    0.07s]- Epoch: 8 [0100/1330 (  8%)]	Losses: ce_loss-0.2977(0.3796) loss_tacl-0.0001(0.0001) loss_sacl-0.0156(0.0134) loss_event-0.0048(0.0050) loss_evidence-0.0009(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2977(0.3796) 
+[2026-09-19 16:43:41,401]-[trainutils.py line:416]:[EST:    5.79m][Process Time:    0.07s]- Epoch: 8 [0200/1330 ( 15%)]	Losses: ce_loss-0.4503(0.3774) loss_tacl-0.0001(0.0001) loss_sacl-0.0119(0.0132) loss_event-0.0043(0.0048) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4503(0.3774) 
+[2026-09-19 16:44:11,674]-[trainutils.py line:416]:[EST:    5.25m][Process Time:    0.06s]- Epoch: 8 [0300/1330 ( 23%)]	Losses: ce_loss-0.2740(0.3878) loss_tacl-0.0001(0.0001) loss_sacl-0.0116(0.0130) loss_event-0.0039(0.0047) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2740(0.3878) 
+[2026-09-19 16:44:40,773]-[trainutils.py line:416]:[EST:    4.68m][Process Time:    0.06s]- Epoch: 8 [0400/1330 ( 30%)]	Losses: ce_loss-0.2945(0.3916) loss_tacl-0.0001(0.0001) loss_sacl-0.0137(0.0130) loss_event-0.0056(0.0047) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2945(0.3916) 
+[2026-09-19 16:45:06,417]-[trainutils.py line:416]:[EST:    4.05m][Process Time:    0.04s]- Epoch: 8 [0500/1330 ( 38%)]	Losses: ce_loss-0.3023(0.3963) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0130) loss_event-0.0045(0.0047) loss_evidence-0.0009(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3023(0.3963) 
+[2026-09-19 16:45:27,269]-[trainutils.py line:416]:[EST:    3.39m][Process Time:    0.04s]- Epoch: 8 [0600/1330 ( 45%)]	Losses: ce_loss-0.3375(0.4006) loss_tacl-0.0001(0.0001) loss_sacl-0.0147(0.0130) loss_event-0.0057(0.0048) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3375(0.4006) 
+[2026-09-19 16:45:48,395]-[trainutils.py line:416]:[EST:    2.82m][Process Time:    0.05s]- Epoch: 8 [0700/1330 ( 53%)]	Losses: ce_loss-0.4861(0.3993) loss_tacl-0.0001(0.0001) loss_sacl-0.0124(0.0130) loss_event-0.0054(0.0048) loss_evidence-0.0013(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4861(0.3993) 
+[2026-09-19 16:46:11,053]-[trainutils.py line:416]:[EST:    2.33m][Process Time:    0.05s]- Epoch: 8 [0800/1330 ( 60%)]	Losses: ce_loss-0.2275(0.3983) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0130) loss_event-0.0050(0.0049) loss_evidence-0.0005(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2275(0.3983) 
+[2026-09-19 16:46:33,628]-[trainutils.py line:416]:[EST:    1.86m][Process Time:    0.05s]- Epoch: 8 [0900/1330 ( 68%)]	Losses: ce_loss-0.2964(0.3964) loss_tacl-0.0001(0.0001) loss_sacl-0.0151(0.0130) loss_event-0.0060(0.0049) loss_evidence-0.0004(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2964(0.3964) 
+[2026-09-19 16:46:56,141]-[trainutils.py line:416]:[EST:    1.41m][Process Time:    0.06s]- Epoch: 8 [1000/1330 ( 75%)]	Losses: ce_loss-0.3055(0.3999) loss_tacl-0.0001(0.0001) loss_sacl-0.0124(0.0130) loss_event-0.0056(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3055(0.3999) 
+[2026-09-19 16:47:18,899]-[trainutils.py line:416]:[EST:    0.97m][Process Time:    0.05s]- Epoch: 8 [1100/1330 ( 83%)]	Losses: ce_loss-0.3615(0.4000) loss_tacl-0.0001(0.0001) loss_sacl-0.0143(0.0130) loss_event-0.0050(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3615(0.4000) 
+[2026-09-19 16:47:41,003]-[trainutils.py line:416]:[EST:    0.54m][Process Time:    0.05s]- Epoch: 8 [1200/1330 ( 90%)]	Losses: ce_loss-0.5531(0.4010) loss_tacl-0.0001(0.0001) loss_sacl-0.0130(0.0130) loss_event-0.0055(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5531(0.4010) 
+[2026-09-19 16:48:03,445]-[trainutils.py line:416]:[EST:    0.12m][Process Time:    0.05s]- Epoch: 8 [1300/1330 ( 98%)]	Losses: ce_loss-0.4491(0.4015) loss_tacl-0.0001(0.0001) loss_sacl-0.0144(0.0130) loss_event-0.0063(0.0049) loss_evidence-0.0008(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4491(0.4015) 
+[2026-09-19 16:48:10,062]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.05s]- Epoch: 8 [1330/1330 (100%)]	Losses: ce_loss-0.1742(0.4029) loss_tacl-0.0001(0.0001) loss_sacl-0.0154(0.0130) loss_event-0.0069(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.1742(0.4029) 
+[2026-09-19 16:48:10,692]-[train.py line:106]:
+-------------- validation epoch 8 -------------- 
+[2026-09-19 16:48:11,012]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:48:44,646]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:48:44,646]-[trainutils.py line:492]:Epoch 8 -           Audio/Counting accuracy: 84.93(434/511) 
+[2026-09-19 16:48:44,646]-[trainutils.py line:492]:Epoch 8 -        Audio/Comparative accuracy: 64.75(191/295) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:497]:Epoch 8 -                    Audio accuracy: 77.54(625/806) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:492]:Epoch 8 -          Visual/Counting accuracy: 80.17(481/600) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:492]:Epoch 8 -          Visual/Location accuracy: 86.13(528/613) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:497]:Epoch 8 -                   Visual accuracy: 83.18(1009/1213) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:492]:Epoch 8 - Audio-Visual/Existential accuracy: 85.66(424/495) 
+[2026-09-19 16:48:44,647]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Counting accuracy: 78.67(498/633) 
+[2026-09-19 16:48:44,648]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Location accuracy: 68.33(315/461) 
+[2026-09-19 16:48:44,648]-[trainutils.py line:492]:Epoch 8 - Audio-Visual/Comparative accuracy: 63.39(348/549) 
+[2026-09-19 16:48:44,648]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Temporal accuracy: 72.51(298/411) 
+[2026-09-19 16:48:44,648]-[trainutils.py line:497]:Epoch 8 -             Audio-Visual accuracy: 73.87(1883/2549) 
+[2026-09-19 16:48:44,649]-[trainutils.py line:501]:Epoch 8 -                    Total accuracy: 76.99(3517/4568) 
+[2026-09-19 16:48:45,022]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:49:18,323]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:49:18,323]-[trainutils.py line:492]:Epoch 8 -           Audio/Counting accuracy: 86.50(442/511) 
+[2026-09-19 16:49:18,323]-[trainutils.py line:492]:Epoch 8 -        Audio/Comparative accuracy: 63.05(186/295) 
+[2026-09-19 16:49:18,323]-[trainutils.py line:497]:Epoch 8 -                    Audio accuracy: 77.92(628/806) 
+[2026-09-19 16:49:18,324]-[trainutils.py line:492]:Epoch 8 -          Visual/Counting accuracy: 83.83(503/600) 
+[2026-09-19 16:49:18,324]-[trainutils.py line:492]:Epoch 8 -          Visual/Location accuracy: 88.09(540/613) 
+[2026-09-19 16:49:18,324]-[trainutils.py line:497]:Epoch 8 -                   Visual accuracy: 85.99(1043/1213) 
+[2026-09-19 16:49:18,324]-[trainutils.py line:492]:Epoch 8 - Audio-Visual/Existential accuracy: 84.85(420/495) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Counting accuracy: 81.83(518/633) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Location accuracy: 67.03(309/461) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:492]:Epoch 8 - Audio-Visual/Comparative accuracy: 62.30(342/549) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:492]:Epoch 8 -    Audio-Visual/Temporal accuracy: 71.29(293/411) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:497]:Epoch 8 -             Audio-Visual accuracy: 73.83(1882/2549) 
+[2026-09-19 16:49:18,325]-[trainutils.py line:501]:Epoch 8 -                    Total accuracy: 77.78(3553/4568) 
+[2026-09-19 16:49:18,367]-[train.py line:151]:best model saved at epoch 8 with acc 77.78021015761821 (ema) 
+[2026-09-19 16:49:18,416]-[train.py line:167]:Epoch 8 done with 77.78 and loss 0.53906. 
+[2026-09-19 16:49:18,416]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 16:49:18,416]-[train.py line:102]:
+-------------- training epoch 9 -------------- 
+[2026-09-19 16:49:18,638]-[trainutils.py line:416]:[EST:    4.87m][Process Time:    0.04s]- Epoch: 9 [0000/1330 (  0%)]	Losses: ce_loss-0.4388(0.4388) loss_tacl-0.0001(0.0001) loss_sacl-0.0129(0.0129) loss_event-0.0055(0.0055) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4388(0.4388) 
+[2026-09-19 16:49:40,933]-[trainutils.py line:416]:[EST:    4.57m][Process Time:    0.06s]- Epoch: 9 [0100/1330 (  8%)]	Losses: ce_loss-0.3245(0.3488) loss_tacl-0.0001(0.0001) loss_sacl-0.0123(0.0128) loss_event-0.0047(0.0049) loss_evidence-0.0002(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3245(0.3488) 
+[2026-09-19 16:50:03,397]-[trainutils.py line:416]:[EST:    4.21m][Process Time:    0.05s]- Epoch: 9 [0200/1330 ( 15%)]	Losses: ce_loss-0.4653(0.3643) loss_tacl-0.0001(0.0001) loss_sacl-0.0120(0.0129) loss_event-0.0050(0.0049) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4653(0.3643) 
+[2026-09-19 16:50:25,509]-[trainutils.py line:416]:[EST:    3.82m][Process Time:    0.05s]- Epoch: 9 [0300/1330 ( 23%)]	Losses: ce_loss-0.4168(0.3629) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0129) loss_event-0.0059(0.0050) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4168(0.3629) 
+[2026-09-19 16:50:47,765]-[trainutils.py line:416]:[EST:    3.45m][Process Time:    0.05s]- Epoch: 9 [0400/1330 ( 30%)]	Losses: ce_loss-0.4775(0.3577) loss_tacl-0.0001(0.0001) loss_sacl-0.0130(0.0127) loss_event-0.0048(0.0049) loss_evidence-0.0002(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4775(0.3577) 
+[2026-09-19 16:51:10,008]-[trainutils.py line:416]:[EST:    3.08m][Process Time:    0.05s]- Epoch: 9 [0500/1330 ( 38%)]	Losses: ce_loss-0.3848(0.3609) loss_tacl-0.0001(0.0001) loss_sacl-0.0128(0.0126) loss_event-0.0044(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3848(0.3609) 
+[2026-09-19 16:51:32,365]-[trainutils.py line:416]:[EST:    2.71m][Process Time:    0.05s]- Epoch: 9 [0600/1330 ( 45%)]	Losses: ce_loss-0.3633(0.3602) loss_tacl-0.0001(0.0001) loss_sacl-0.0119(0.0125) loss_event-0.0047(0.0049) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3633(0.3602) 
+[2026-09-19 16:51:54,651]-[trainutils.py line:416]:[EST:    2.34m][Process Time:    0.05s]- Epoch: 9 [0700/1330 ( 53%)]	Losses: ce_loss-0.3507(0.3572) loss_tacl-0.0001(0.0001) loss_sacl-0.0115(0.0125) loss_event-0.0048(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3507(0.3572) 
+[2026-09-19 16:52:17,063]-[trainutils.py line:416]:[EST:    1.97m][Process Time:    0.05s]- Epoch: 9 [0800/1330 ( 60%)]	Losses: ce_loss-0.4096(0.3585) loss_tacl-0.0001(0.0001) loss_sacl-0.0132(0.0125) loss_event-0.0042(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4096(0.3585) 
+[2026-09-19 16:52:39,451]-[trainutils.py line:416]:[EST:    1.60m][Process Time:    0.05s]- Epoch: 9 [0900/1330 ( 68%)]	Losses: ce_loss-0.3224(0.3587) loss_tacl-0.0001(0.0001) loss_sacl-0.0137(0.0125) loss_event-0.0052(0.0049) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3224(0.3587) 
+[2026-09-19 16:53:01,900]-[trainutils.py line:416]:[EST:    1.22m][Process Time:    0.05s]- Epoch: 9 [1000/1330 ( 75%)]	Losses: ce_loss-0.2425(0.3604) loss_tacl-0.0001(0.0001) loss_sacl-0.0137(0.0126) loss_event-0.0053(0.0050) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2425(0.3604) 
+[2026-09-19 16:53:24,103]-[trainutils.py line:416]:[EST:    0.85m][Process Time:    0.05s]- Epoch: 9 [1100/1330 ( 83%)]	Losses: ce_loss-0.3328(0.3618) loss_tacl-0.0001(0.0001) loss_sacl-0.0117(0.0126) loss_event-0.0046(0.0050) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3328(0.3618) 
+[2026-09-19 16:53:46,568]-[trainutils.py line:416]:[EST:    0.48m][Process Time:    0.05s]- Epoch: 9 [1200/1330 ( 90%)]	Losses: ce_loss-0.3356(0.3614) loss_tacl-0.0001(0.0001) loss_sacl-0.0125(0.0125) loss_event-0.0043(0.0050) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3356(0.3614) 
+[2026-09-19 16:54:09,002]-[trainutils.py line:416]:[EST:    0.11m][Process Time:    0.05s]- Epoch: 9 [1300/1330 ( 98%)]	Losses: ce_loss-0.7594(0.3620) loss_tacl-0.0001(0.0001) loss_sacl-0.0108(0.0125) loss_event-0.0046(0.0050) loss_evidence-0.0002(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7594(0.3620) 
+[2026-09-19 16:54:15,586]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.05s]- Epoch: 9 [1330/1330 (100%)]	Losses: ce_loss-0.3606(0.3626) loss_tacl-0.0001(0.0001) loss_sacl-0.0119(0.0125) loss_event-0.0055(0.0050) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3606(0.3626) 
+[2026-09-19 16:54:16,193]-[train.py line:106]:
+-------------- validation epoch 9 -------------- 
+[2026-09-19 16:54:16,532]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:54:50,053]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:54:50,054]-[trainutils.py line:492]:Epoch 9 -           Audio/Counting accuracy: 85.32(436/511) 
+[2026-09-19 16:54:50,054]-[trainutils.py line:492]:Epoch 9 -        Audio/Comparative accuracy: 61.69(182/295) 
+[2026-09-19 16:54:50,054]-[trainutils.py line:497]:Epoch 9 -                    Audio accuracy: 76.67(618/806) 
+[2026-09-19 16:54:50,054]-[trainutils.py line:492]:Epoch 9 -          Visual/Counting accuracy: 81.83(491/600) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 -          Visual/Location accuracy: 86.62(531/613) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:497]:Epoch 9 -                   Visual accuracy: 84.25(1022/1213) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 - Audio-Visual/Existential accuracy: 83.23(412/495) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Counting accuracy: 78.36(496/633) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Location accuracy: 67.03(309/461) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 - Audio-Visual/Comparative accuracy: 62.11(341/549) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Temporal accuracy: 70.07(288/411) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:497]:Epoch 9 -             Audio-Visual accuracy: 72.42(1846/2549) 
+[2026-09-19 16:54:50,055]-[trainutils.py line:501]:Epoch 9 -                    Total accuracy: 76.31(3486/4568) 
+[2026-09-19 16:54:50,432]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 16:55:23,907]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 16:55:23,907]-[trainutils.py line:492]:Epoch 9 -           Audio/Counting accuracy: 86.69(443/511) 
+[2026-09-19 16:55:23,908]-[trainutils.py line:492]:Epoch 9 -        Audio/Comparative accuracy: 62.71(185/295) 
+[2026-09-19 16:55:23,908]-[trainutils.py line:497]:Epoch 9 -                    Audio accuracy: 77.92(628/806) 
+[2026-09-19 16:55:23,908]-[trainutils.py line:492]:Epoch 9 -          Visual/Counting accuracy: 83.50(501/600) 
+[2026-09-19 16:55:23,909]-[trainutils.py line:492]:Epoch 9 -          Visual/Location accuracy: 87.60(537/613) 
+[2026-09-19 16:55:23,909]-[trainutils.py line:497]:Epoch 9 -                   Visual accuracy: 85.57(1038/1213) 
+[2026-09-19 16:55:23,909]-[trainutils.py line:492]:Epoch 9 - Audio-Visual/Existential accuracy: 84.65(419/495) 
+[2026-09-19 16:55:23,909]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Counting accuracy: 81.04(513/633) 
+[2026-09-19 16:55:23,909]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Location accuracy: 67.25(310/461) 
+[2026-09-19 16:55:23,910]-[trainutils.py line:492]:Epoch 9 - Audio-Visual/Comparative accuracy: 63.02(346/549) 
+[2026-09-19 16:55:23,910]-[trainutils.py line:492]:Epoch 9 -    Audio-Visual/Temporal accuracy: 71.78(295/411) 
+[2026-09-19 16:55:23,910]-[trainutils.py line:497]:Epoch 9 -             Audio-Visual accuracy: 73.87(1883/2549) 
+[2026-09-19 16:55:23,910]-[trainutils.py line:501]:Epoch 9 -                    Total accuracy: 77.69(3549/4568) 
+[2026-09-19 16:55:23,914]-[train.py line:167]:Epoch 9 done with 77.69 and loss 0.55469. 
+[2026-09-19 16:55:23,915]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 16:55:23,915]-[train.py line:102]:
+-------------- training epoch 10 -------------- 
+[2026-09-19 16:55:24,124]-[trainutils.py line:416]:[EST:    4.61m][Process Time:    0.04s]- Epoch: 10 [0000/1330 (  0%)]	Losses: ce_loss-0.2767(0.2767) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0135) loss_event-0.0050(0.0050) loss_evidence-0.0003(0.0003) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2767(0.2767) 
+[2026-09-19 16:55:46,347]-[trainutils.py line:416]:[EST:    4.55m][Process Time:    0.04s]- Epoch: 10 [0100/1330 (  8%)]	Losses: ce_loss-0.3506(0.3118) loss_tacl-0.0001(0.0001) loss_sacl-0.0115(0.0126) loss_event-0.0050(0.0053) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3506(0.3118) 
+[2026-09-19 16:56:08,897]-[trainutils.py line:416]:[EST:    4.21m][Process Time:    0.05s]- Epoch: 10 [0200/1330 ( 15%)]	Losses: ce_loss-0.2995(0.3191) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0124) loss_event-0.0046(0.0052) loss_evidence-0.0004(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2995(0.3191) 
+[2026-09-19 16:56:31,132]-[trainutils.py line:416]:[EST:    3.83m][Process Time:    0.05s]- Epoch: 10 [0300/1330 ( 23%)]	Losses: ce_loss-0.7021(0.3167) loss_tacl-0.0001(0.0001) loss_sacl-0.0114(0.0124) loss_event-0.0051(0.0052) loss_evidence-0.0010(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.7021(0.3167) 
+[2026-09-19 16:56:53,061]-[trainutils.py line:416]:[EST:    3.44m][Process Time:    0.04s]- Epoch: 10 [0400/1330 ( 30%)]	Losses: ce_loss-0.2826(0.3183) loss_tacl-0.0001(0.0001) loss_sacl-0.0133(0.0123) loss_event-0.0052(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2826(0.3183) 
+[2026-09-19 16:57:15,630]-[trainutils.py line:416]:[EST:    3.08m][Process Time:    0.05s]- Epoch: 10 [0500/1330 ( 38%)]	Losses: ce_loss-0.3127(0.3202) loss_tacl-0.0001(0.0001) loss_sacl-0.0127(0.0122) loss_event-0.0059(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3127(0.3202) 
+[2026-09-19 16:57:38,398]-[trainutils.py line:416]:[EST:    2.72m][Process Time:    0.05s]- Epoch: 10 [0600/1330 ( 45%)]	Losses: ce_loss-0.1743(0.3167) loss_tacl-0.0001(0.0001) loss_sacl-0.0129(0.0122) loss_event-0.0064(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1743(0.3167) 
+[2026-09-19 16:58:00,847]-[trainutils.py line:416]:[EST:    2.35m][Process Time:    0.05s]- Epoch: 10 [0700/1330 ( 53%)]	Losses: ce_loss-0.3505(0.3180) loss_tacl-0.0001(0.0001) loss_sacl-0.0121(0.0122) loss_event-0.0044(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3505(0.3180) 
+[2026-09-19 16:58:22,864]-[trainutils.py line:416]:[EST:    1.97m][Process Time:    0.05s]- Epoch: 10 [0800/1330 ( 60%)]	Losses: ce_loss-0.3452(0.3186) loss_tacl-0.0001(0.0001) loss_sacl-0.0135(0.0122) loss_event-0.0049(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3452(0.3186) 
+[2026-09-19 16:58:45,184]-[trainutils.py line:416]:[EST:    1.60m][Process Time:    0.05s]- Epoch: 10 [0900/1330 ( 68%)]	Losses: ce_loss-0.3549(0.3205) loss_tacl-0.0001(0.0001) loss_sacl-0.0120(0.0122) loss_event-0.0044(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3549(0.3205) 
+[2026-09-19 16:59:07,486]-[trainutils.py line:416]:[EST:    1.22m][Process Time:    0.05s]- Epoch: 10 [1000/1330 ( 75%)]	Losses: ce_loss-0.4467(0.3200) loss_tacl-0.0001(0.0001) loss_sacl-0.0100(0.0121) loss_event-0.0043(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4467(0.3200) 
+[2026-09-19 16:59:29,644]-[trainutils.py line:416]:[EST:    0.85m][Process Time:    0.05s]- Epoch: 10 [1100/1330 ( 83%)]	Losses: ce_loss-0.3775(0.3208) loss_tacl-0.0001(0.0001) loss_sacl-0.0109(0.0121) loss_event-0.0049(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3775(0.3208) 
+[2026-09-19 16:59:51,606]-[trainutils.py line:416]:[EST:    0.48m][Process Time:    0.05s]- Epoch: 10 [1200/1330 ( 90%)]	Losses: ce_loss-0.2790(0.3211) loss_tacl-0.0001(0.0001) loss_sacl-0.0129(0.0121) loss_event-0.0064(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2790(0.3211) 
+[2026-09-19 17:00:14,077]-[trainutils.py line:416]:[EST:    0.11m][Process Time:    0.05s]- Epoch: 10 [1300/1330 ( 98%)]	Losses: ce_loss-0.2706(0.3219) loss_tacl-0.0001(0.0001) loss_sacl-0.0123(0.0121) loss_event-0.0053(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2706(0.3219) 
+[2026-09-19 17:00:20,714]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.05s]- Epoch: 10 [1330/1330 (100%)]	Losses: ce_loss-0.2620(0.3228) loss_tacl-0.0001(0.0001) loss_sacl-0.0119(0.0121) loss_event-0.0065(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2620(0.3228) 
+[2026-09-19 17:00:21,315]-[train.py line:106]:
+-------------- validation epoch 10 -------------- 
+[2026-09-19 17:00:21,659]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:00:55,155]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:00:55,155]-[trainutils.py line:492]:Epoch 10 -           Audio/Counting accuracy: 84.54(432/511) 
+[2026-09-19 17:00:55,155]-[trainutils.py line:492]:Epoch 10 -        Audio/Comparative accuracy: 61.69(182/295) 
+[2026-09-19 17:00:55,156]-[trainutils.py line:497]:Epoch 10 -                    Audio accuracy: 76.18(614/806) 
+[2026-09-19 17:00:55,156]-[trainutils.py line:492]:Epoch 10 -          Visual/Counting accuracy: 83.50(501/600) 
+[2026-09-19 17:00:55,157]-[trainutils.py line:492]:Epoch 10 -          Visual/Location accuracy: 86.95(533/613) 
+[2026-09-19 17:00:55,157]-[trainutils.py line:497]:Epoch 10 -                   Visual accuracy: 85.24(1034/1213) 
+[2026-09-19 17:00:55,157]-[trainutils.py line:492]:Epoch 10 - Audio-Visual/Existential accuracy: 83.23(412/495) 
+[2026-09-19 17:00:55,157]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Counting accuracy: 77.73(492/633) 
+[2026-09-19 17:00:55,157]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Location accuracy: 67.25(310/461) 
+[2026-09-19 17:00:55,158]-[trainutils.py line:492]:Epoch 10 - Audio-Visual/Comparative accuracy: 61.57(338/549) 
+[2026-09-19 17:00:55,158]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Temporal accuracy: 72.02(296/411) 
+[2026-09-19 17:00:55,158]-[trainutils.py line:497]:Epoch 10 -             Audio-Visual accuracy: 72.50(1848/2549) 
+[2026-09-19 17:00:55,158]-[trainutils.py line:501]:Epoch 10 -                    Total accuracy: 76.53(3496/4568) 
+[2026-09-19 17:00:55,514]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:01:28,608]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:01:28,608]-[trainutils.py line:492]:Epoch 10 -           Audio/Counting accuracy: 86.30(441/511) 
+[2026-09-19 17:01:28,608]-[trainutils.py line:492]:Epoch 10 -        Audio/Comparative accuracy: 62.71(185/295) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:497]:Epoch 10 -                    Audio accuracy: 77.67(626/806) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:492]:Epoch 10 -          Visual/Counting accuracy: 84.00(504/600) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:492]:Epoch 10 -          Visual/Location accuracy: 87.28(535/613) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:497]:Epoch 10 -                   Visual accuracy: 85.66(1039/1213) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:492]:Epoch 10 - Audio-Visual/Existential accuracy: 84.85(420/495) 
+[2026-09-19 17:01:28,610]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Counting accuracy: 80.88(512/633) 
+[2026-09-19 17:01:28,611]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Location accuracy: 66.59(307/461) 
+[2026-09-19 17:01:28,611]-[trainutils.py line:492]:Epoch 10 - Audio-Visual/Comparative accuracy: 63.21(347/549) 
+[2026-09-19 17:01:28,611]-[trainutils.py line:492]:Epoch 10 -    Audio-Visual/Temporal accuracy: 72.02(296/411) 
+[2026-09-19 17:01:28,611]-[trainutils.py line:497]:Epoch 10 -             Audio-Visual accuracy: 73.83(1882/2549) 
+[2026-09-19 17:01:28,612]-[trainutils.py line:501]:Epoch 10 -                    Total accuracy: 77.65(3547/4568) 
+[2026-09-19 17:01:28,615]-[train.py line:167]:Epoch 10 done with 77.65 and loss 0.58203. 
+[2026-09-19 17:01:28,616]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 17:01:28,616]-[train.py line:102]:
+-------------- training epoch 11 -------------- 
+[2026-09-19 17:01:28,841]-[trainutils.py line:416]:[EST:    4.94m][Process Time:    0.05s]- Epoch: 11 [0000/1330 (  0%)]	Losses: ce_loss-0.3087(0.3087) loss_tacl-0.0001(0.0001) loss_sacl-0.0099(0.0099) loss_event-0.0048(0.0048) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3087(0.3087) 
+[2026-09-19 17:01:51,816]-[trainutils.py line:416]:[EST:    4.70m][Process Time:    0.05s]- Epoch: 11 [0100/1330 (  8%)]	Losses: ce_loss-0.2103(0.2816) loss_tacl-0.0001(0.0001) loss_sacl-0.0117(0.0118) loss_event-0.0051(0.0052) loss_evidence-0.0000(0.0002) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2103(0.2816) 
+[2026-09-19 17:02:14,485]-[trainutils.py line:416]:[EST:    4.29m][Process Time:    0.05s]- Epoch: 11 [0200/1330 ( 15%)]	Losses: ce_loss-0.1826(0.2722) loss_tacl-0.0001(0.0001) loss_sacl-0.0113(0.0119) loss_event-0.0052(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1826(0.2722) 
+[2026-09-19 17:02:36,936]-[trainutils.py line:416]:[EST:    3.89m][Process Time:    0.05s]- Epoch: 11 [0300/1330 ( 23%)]	Losses: ce_loss-0.2904(0.2793) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0120) loss_event-0.0051(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2904(0.2793) 
+[2026-09-19 17:02:59,798]-[trainutils.py line:416]:[EST:    3.52m][Process Time:    0.04s]- Epoch: 11 [0400/1330 ( 30%)]	Losses: ce_loss-0.4711(0.2838) loss_tacl-0.0001(0.0001) loss_sacl-0.0098(0.0119) loss_event-0.0050(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4711(0.2838) 
+[2026-09-19 17:03:22,108]-[trainutils.py line:416]:[EST:    3.13m][Process Time:    0.05s]- Epoch: 11 [0500/1330 ( 38%)]	Losses: ce_loss-0.2772(0.2846) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0119) loss_event-0.0047(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2772(0.2846) 
+[2026-09-19 17:03:44,778]-[trainutils.py line:416]:[EST:    2.75m][Process Time:    0.05s]- Epoch: 11 [0600/1330 ( 45%)]	Losses: ce_loss-0.2010(0.2843) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0119) loss_event-0.0055(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2010(0.2843) 
+[2026-09-19 17:04:12,192]-[trainutils.py line:416]:[EST:    2.45m][Process Time:    0.06s]- Epoch: 11 [0700/1330 ( 53%)]	Losses: ce_loss-0.3445(0.2848) loss_tacl-0.0001(0.0001) loss_sacl-0.0101(0.0119) loss_event-0.0045(0.0053) loss_evidence-0.0013(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3445(0.2848) 
+[2026-09-19 17:04:38,645]-[trainutils.py line:416]:[EST:    2.09m][Process Time:    0.07s]- Epoch: 11 [0800/1330 ( 60%)]	Losses: ce_loss-0.1704(0.2839) loss_tacl-0.0001(0.0001) loss_sacl-0.0121(0.0118) loss_event-0.0056(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1704(0.2839) 
+[2026-09-19 17:05:09,849]-[trainutils.py line:416]:[EST:    1.76m][Process Time:    0.07s]- Epoch: 11 [0900/1330 ( 68%)]	Losses: ce_loss-0.3180(0.2829) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0118) loss_event-0.0055(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3180(0.2829) 
+[2026-09-19 17:05:41,498]-[trainutils.py line:416]:[EST:    1.39m][Process Time:    0.07s]- Epoch: 11 [1000/1330 ( 75%)]	Losses: ce_loss-0.3109(0.2853) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0117) loss_event-0.0045(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3109(0.2853) 
+[2026-09-19 17:06:14,656]-[trainutils.py line:416]:[EST:    0.99m][Process Time:    0.07s]- Epoch: 11 [1100/1330 ( 83%)]	Losses: ce_loss-0.6657(0.2848) loss_tacl-0.0001(0.0001) loss_sacl-0.0116(0.0117) loss_event-0.0054(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.6657(0.2848) 
+[2026-09-19 17:06:47,100]-[trainutils.py line:416]:[EST:    0.57m][Process Time:    0.07s]- Epoch: 11 [1200/1330 ( 90%)]	Losses: ce_loss-0.2301(0.2870) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0116) loss_event-0.0043(0.0052) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2301(0.2870) 
+[2026-09-19 17:07:19,613]-[trainutils.py line:416]:[EST:    0.13m][Process Time:    0.07s]- Epoch: 11 [1300/1330 ( 98%)]	Losses: ce_loss-0.2993(0.2874) loss_tacl-0.0001(0.0001) loss_sacl-0.0108(0.0116) loss_event-0.0054(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2993(0.2874) 
+[2026-09-19 17:07:29,424]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.10s]- Epoch: 11 [1330/1330 (100%)]	Losses: ce_loss-0.2156(0.2878) loss_tacl-0.0001(0.0001) loss_sacl-0.0109(0.0116) loss_event-0.0050(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2156(0.2878) 
+[2026-09-19 17:07:33,082]-[train.py line:106]:
+-------------- validation epoch 11 -------------- 
+[2026-09-19 17:07:33,739]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:08:21,763]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:08:21,765]-[trainutils.py line:492]:Epoch 11 -           Audio/Counting accuracy: 84.74(433/511) 
+[2026-09-19 17:08:21,766]-[trainutils.py line:492]:Epoch 11 -        Audio/Comparative accuracy: 60.34(178/295) 
+[2026-09-19 17:08:21,766]-[trainutils.py line:497]:Epoch 11 -                    Audio accuracy: 75.81(611/806) 
+[2026-09-19 17:08:21,768]-[trainutils.py line:492]:Epoch 11 -          Visual/Counting accuracy: 84.83(509/600) 
+[2026-09-19 17:08:21,768]-[trainutils.py line:492]:Epoch 11 -          Visual/Location accuracy: 88.25(541/613) 
+[2026-09-19 17:08:21,768]-[trainutils.py line:497]:Epoch 11 -                   Visual accuracy: 86.56(1050/1213) 
+[2026-09-19 17:08:21,768]-[trainutils.py line:492]:Epoch 11 - Audio-Visual/Existential accuracy: 82.63(409/495) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Counting accuracy: 78.52(497/633) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Location accuracy: 67.90(313/461) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:492]:Epoch 11 - Audio-Visual/Comparative accuracy: 61.93(340/549) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Temporal accuracy: 72.75(299/411) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:497]:Epoch 11 -             Audio-Visual accuracy: 72.89(1858/2549) 
+[2026-09-19 17:08:21,769]-[trainutils.py line:501]:Epoch 11 -                    Total accuracy: 77.04(3519/4568) 
+[2026-09-19 17:08:22,321]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:09:11,855]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:09:11,857]-[trainutils.py line:492]:Epoch 11 -           Audio/Counting accuracy: 85.32(436/511) 
+[2026-09-19 17:09:11,857]-[trainutils.py line:492]:Epoch 11 -        Audio/Comparative accuracy: 62.71(185/295) 
+[2026-09-19 17:09:11,857]-[trainutils.py line:497]:Epoch 11 -                    Audio accuracy: 77.05(621/806) 
+[2026-09-19 17:09:11,857]-[trainutils.py line:492]:Epoch 11 -          Visual/Counting accuracy: 84.00(504/600) 
+[2026-09-19 17:09:11,857]-[trainutils.py line:492]:Epoch 11 -          Visual/Location accuracy: 87.28(535/613) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:497]:Epoch 11 -                   Visual accuracy: 85.66(1039/1213) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:492]:Epoch 11 - Audio-Visual/Existential accuracy: 83.64(414/495) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Counting accuracy: 80.09(507/633) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Location accuracy: 66.81(308/461) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:492]:Epoch 11 - Audio-Visual/Comparative accuracy: 62.48(343/549) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:492]:Epoch 11 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 17:09:11,858]-[trainutils.py line:497]:Epoch 11 -             Audio-Visual accuracy: 73.21(1866/2549) 
+[2026-09-19 17:09:11,859]-[trainutils.py line:501]:Epoch 11 -                    Total accuracy: 77.19(3526/4568) 
+[2026-09-19 17:09:11,868]-[train.py line:167]:Epoch 11 done with 77.19 and loss 0.60547. 
+[2026-09-19 17:09:11,868]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 17:09:11,868]-[train.py line:102]:
+-------------- training epoch 12 -------------- 
+[2026-09-19 17:09:12,191]-[trainutils.py line:416]:[EST:    7.08m][Process Time:    0.07s]- Epoch: 12 [0000/1330 (  0%)]	Losses: ce_loss-0.2975(0.2975) loss_tacl-0.0001(0.0001) loss_sacl-0.0113(0.0113) loss_event-0.0048(0.0048) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2975(0.2975) 
+[2026-09-19 17:09:44,678]-[trainutils.py line:416]:[EST:    6.65m][Process Time:    0.08s]- Epoch: 12 [0100/1330 (  8%)]	Losses: ce_loss-0.5198(0.2561) loss_tacl-0.0001(0.0001) loss_sacl-0.0110(0.0114) loss_event-0.0047(0.0054) loss_evidence-0.0001(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5198(0.2561) 
+[2026-09-19 17:10:18,552]-[trainutils.py line:416]:[EST:    6.24m][Process Time:    0.07s]- Epoch: 12 [0200/1330 ( 15%)]	Losses: ce_loss-0.3162(0.2499) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0113) loss_event-0.0048(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3162(0.2499) 
+[2026-09-19 17:10:49,472]-[trainutils.py line:416]:[EST:    5.56m][Process Time:    0.07s]- Epoch: 12 [0300/1330 ( 23%)]	Losses: ce_loss-0.2324(0.2478) loss_tacl-0.0001(0.0001) loss_sacl-0.0121(0.0113) loss_event-0.0059(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2324(0.2478) 
+[2026-09-19 17:11:20,711]-[trainutils.py line:416]:[EST:    4.97m][Process Time:    0.07s]- Epoch: 12 [0400/1330 ( 30%)]	Losses: ce_loss-0.2518(0.2508) loss_tacl-0.0001(0.0001) loss_sacl-0.0120(0.0113) loss_event-0.0047(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2518(0.2508) 
+[2026-09-19 17:11:51,605]-[trainutils.py line:416]:[EST:    4.41m][Process Time:    0.07s]- Epoch: 12 [0500/1330 ( 38%)]	Losses: ce_loss-0.5353(0.2526) loss_tacl-0.0001(0.0001) loss_sacl-0.0109(0.0113) loss_event-0.0053(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.5353(0.2526) 
+[2026-09-19 17:12:23,432]-[trainutils.py line:416]:[EST:    3.87m][Process Time:    0.07s]- Epoch: 12 [0600/1330 ( 45%)]	Losses: ce_loss-0.2963(0.2508) loss_tacl-0.0001(0.0001) loss_sacl-0.0113(0.0113) loss_event-0.0055(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2963(0.2508) 
+[2026-09-19 17:12:55,421]-[trainutils.py line:416]:[EST:    3.34m][Process Time:    0.06s]- Epoch: 12 [0700/1330 ( 53%)]	Losses: ce_loss-0.2104(0.2501) loss_tacl-0.0001(0.0001) loss_sacl-0.0121(0.0113) loss_event-0.0053(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2104(0.2501) 
+[2026-09-19 17:13:26,968]-[trainutils.py line:416]:[EST:    2.81m][Process Time:    0.07s]- Epoch: 12 [0800/1330 ( 60%)]	Losses: ce_loss-0.1635(0.2509) loss_tacl-0.0001(0.0001) loss_sacl-0.0122(0.0113) loss_event-0.0058(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1635(0.2509) 
+[2026-09-19 17:13:57,466]-[trainutils.py line:416]:[EST:    2.27m][Process Time:    0.07s]- Epoch: 12 [0900/1330 ( 68%)]	Losses: ce_loss-0.2155(0.2526) loss_tacl-0.0001(0.0001) loss_sacl-0.0098(0.0113) loss_event-0.0048(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2155(0.2526) 
+[2026-09-19 17:14:28,800]-[trainutils.py line:416]:[EST:    1.74m][Process Time:    0.07s]- Epoch: 12 [1000/1330 ( 75%)]	Losses: ce_loss-0.4625(0.2534) loss_tacl-0.0001(0.0001) loss_sacl-0.0102(0.0112) loss_event-0.0052(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4625(0.2534) 
+[2026-09-19 17:14:59,978]-[trainutils.py line:416]:[EST:    1.21m][Process Time:    0.07s]- Epoch: 12 [1100/1330 ( 83%)]	Losses: ce_loss-0.3758(0.2559) loss_tacl-0.0001(0.0001) loss_sacl-0.0098(0.0112) loss_event-0.0049(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3758(0.2559) 
+[2026-09-19 17:15:31,855]-[trainutils.py line:416]:[EST:    0.68m][Process Time:    0.07s]- Epoch: 12 [1200/1330 ( 90%)]	Losses: ce_loss-0.1575(0.2565) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0112) loss_event-0.0053(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1575(0.2565) 
+[2026-09-19 17:16:03,293]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.07s]- Epoch: 12 [1300/1330 ( 98%)]	Losses: ce_loss-0.1029(0.2562) loss_tacl-0.0001(0.0001) loss_sacl-0.0097(0.0112) loss_event-0.0056(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1029(0.2562) 
+[2026-09-19 17:16:12,501]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.08s]- Epoch: 12 [1330/1330 (100%)]	Losses: ce_loss-0.1198(0.2562) loss_tacl-0.0001(0.0001) loss_sacl-0.0117(0.0112) loss_event-0.0078(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1198(0.2562) 
+[2026-09-19 17:16:13,608]-[train.py line:106]:
+-------------- validation epoch 12 -------------- 
+[2026-09-19 17:16:14,060]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:16:59,687]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:16:59,687]-[trainutils.py line:492]:Epoch 12 -           Audio/Counting accuracy: 84.74(433/511) 
+[2026-09-19 17:16:59,690]-[trainutils.py line:492]:Epoch 12 -        Audio/Comparative accuracy: 59.66(176/295) 
+[2026-09-19 17:16:59,690]-[trainutils.py line:497]:Epoch 12 -                    Audio accuracy: 75.56(609/806) 
+[2026-09-19 17:16:59,690]-[trainutils.py line:492]:Epoch 12 -          Visual/Counting accuracy: 83.50(501/600) 
+[2026-09-19 17:16:59,690]-[trainutils.py line:492]:Epoch 12 -          Visual/Location accuracy: 88.25(541/613) 
+[2026-09-19 17:16:59,690]-[trainutils.py line:497]:Epoch 12 -                   Visual accuracy: 85.90(1042/1213) 
+[2026-09-19 17:16:59,691]-[trainutils.py line:492]:Epoch 12 - Audio-Visual/Existential accuracy: 83.03(411/495) 
+[2026-09-19 17:16:59,691]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Counting accuracy: 78.36(496/633) 
+[2026-09-19 17:16:59,691]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Location accuracy: 68.76(317/461) 
+[2026-09-19 17:16:59,691]-[trainutils.py line:492]:Epoch 12 - Audio-Visual/Comparative accuracy: 62.66(344/549) 
+[2026-09-19 17:16:59,692]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Temporal accuracy: 71.29(293/411) 
+[2026-09-19 17:16:59,692]-[trainutils.py line:497]:Epoch 12 -             Audio-Visual accuracy: 73.01(1861/2549) 
+[2026-09-19 17:16:59,692]-[trainutils.py line:501]:Epoch 12 -                    Total accuracy: 76.88(3512/4568) 
+[2026-09-19 17:17:00,199]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:17:45,459]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:17:45,460]-[trainutils.py line:492]:Epoch 12 -           Audio/Counting accuracy: 84.54(432/511) 
+[2026-09-19 17:17:45,460]-[trainutils.py line:492]:Epoch 12 -        Audio/Comparative accuracy: 60.34(178/295) 
+[2026-09-19 17:17:45,460]-[trainutils.py line:497]:Epoch 12 -                    Audio accuracy: 75.68(610/806) 
+[2026-09-19 17:17:45,461]-[trainutils.py line:492]:Epoch 12 -          Visual/Counting accuracy: 84.17(505/600) 
+[2026-09-19 17:17:45,462]-[trainutils.py line:492]:Epoch 12 -          Visual/Location accuracy: 87.77(538/613) 
+[2026-09-19 17:17:45,462]-[trainutils.py line:497]:Epoch 12 -                   Visual accuracy: 85.99(1043/1213) 
+[2026-09-19 17:17:45,462]-[trainutils.py line:492]:Epoch 12 - Audio-Visual/Existential accuracy: 83.64(414/495) 
+[2026-09-19 17:17:45,462]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Counting accuracy: 79.94(506/633) 
+[2026-09-19 17:17:45,462]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Location accuracy: 66.81(308/461) 
+[2026-09-19 17:17:45,463]-[trainutils.py line:492]:Epoch 12 - Audio-Visual/Comparative accuracy: 62.66(344/549) 
+[2026-09-19 17:17:45,463]-[trainutils.py line:492]:Epoch 12 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 17:17:45,463]-[trainutils.py line:497]:Epoch 12 -             Audio-Visual accuracy: 73.21(1866/2549) 
+[2026-09-19 17:17:45,463]-[trainutils.py line:501]:Epoch 12 -                    Total accuracy: 77.04(3519/4568) 
+[2026-09-19 17:17:45,470]-[train.py line:167]:Epoch 12 done with 77.04 and loss 0.62891. 
+[2026-09-19 17:17:45,470]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 17:17:45,470]-[train.py line:102]:
+-------------- training epoch 13 -------------- 
+[2026-09-19 17:17:45,792]-[trainutils.py line:416]:[EST:    6.99m][Process Time:    0.07s]- Epoch: 13 [0000/1330 (  0%)]	Losses: ce_loss-0.1701(0.1701) loss_tacl-0.0001(0.0001) loss_sacl-0.0112(0.0112) loss_event-0.0063(0.0063) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1701(0.1701) 
+[2026-09-19 17:18:16,762]-[trainutils.py line:416]:[EST:    6.35m][Process Time:    0.06s]- Epoch: 13 [0100/1330 (  8%)]	Losses: ce_loss-0.1579(0.2412) loss_tacl-0.0001(0.0001) loss_sacl-0.0119(0.0109) loss_event-0.0056(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1579(0.2412) 
+[2026-09-19 17:18:47,036]-[trainutils.py line:416]:[EST:    5.76m][Process Time:    0.08s]- Epoch: 13 [0200/1330 ( 15%)]	Losses: ce_loss-0.1961(0.2360) loss_tacl-0.0001(0.0001) loss_sacl-0.0114(0.0109) loss_event-0.0057(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1961(0.2360) 
+[2026-09-19 17:19:18,849]-[trainutils.py line:416]:[EST:    5.32m][Process Time:    0.07s]- Epoch: 13 [0300/1330 ( 23%)]	Losses: ce_loss-0.2340(0.2290) loss_tacl-0.0001(0.0001) loss_sacl-0.0101(0.0109) loss_event-0.0053(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2340(0.2290) 
+[2026-09-19 17:19:49,259]-[trainutils.py line:416]:[EST:    4.78m][Process Time:    0.06s]- Epoch: 13 [0400/1330 ( 30%)]	Losses: ce_loss-0.2716(0.2308) loss_tacl-0.0001(0.0001) loss_sacl-0.0102(0.0109) loss_event-0.0051(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2716(0.2308) 
+[2026-09-19 17:20:20,285]-[trainutils.py line:416]:[EST:    4.27m][Process Time:    0.07s]- Epoch: 13 [0500/1330 ( 38%)]	Losses: ce_loss-0.1839(0.2292) loss_tacl-0.0001(0.0001) loss_sacl-0.0104(0.0109) loss_event-0.0058(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1839(0.2292) 
+[2026-09-19 17:20:51,678]-[trainutils.py line:416]:[EST:    3.76m][Process Time:    0.06s]- Epoch: 13 [0600/1330 ( 45%)]	Losses: ce_loss-0.1042(0.2296) loss_tacl-0.0001(0.0001) loss_sacl-0.0099(0.0109) loss_event-0.0054(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1042(0.2296) 
+[2026-09-19 17:21:22,417]-[trainutils.py line:416]:[EST:    3.24m][Process Time:    0.06s]- Epoch: 13 [0700/1330 ( 53%)]	Losses: ce_loss-0.3687(0.2296) loss_tacl-0.0001(0.0001) loss_sacl-0.0117(0.0109) loss_event-0.0052(0.0053) loss_evidence-0.0002(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3687(0.2296) 
+[2026-09-19 17:21:52,812]-[trainutils.py line:416]:[EST:    2.72m][Process Time:    0.07s]- Epoch: 13 [0800/1330 ( 60%)]	Losses: ce_loss-0.1564(0.2296) loss_tacl-0.0001(0.0001) loss_sacl-0.0123(0.0109) loss_event-0.0060(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1564(0.2296) 
+[2026-09-19 17:22:23,128]-[trainutils.py line:416]:[EST:    2.20m][Process Time:    0.07s]- Epoch: 13 [0900/1330 ( 68%)]	Losses: ce_loss-0.3270(0.2315) loss_tacl-0.0001(0.0001) loss_sacl-0.0096(0.0109) loss_event-0.0059(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3270(0.2315) 
+[2026-09-19 17:22:53,906]-[trainutils.py line:416]:[EST:    1.69m][Process Time:    0.07s]- Epoch: 13 [1000/1330 ( 75%)]	Losses: ce_loss-0.1124(0.2287) loss_tacl-0.0001(0.0001) loss_sacl-0.0111(0.0109) loss_event-0.0054(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1124(0.2287) 
+[2026-09-19 17:23:24,331]-[trainutils.py line:416]:[EST:    1.17m][Process Time:    0.07s]- Epoch: 13 [1100/1330 ( 83%)]	Losses: ce_loss-0.0994(0.2299) loss_tacl-0.0001(0.0001) loss_sacl-0.0111(0.0109) loss_event-0.0046(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.0994(0.2299) 
+[2026-09-19 17:23:55,136]-[trainutils.py line:416]:[EST:    0.66m][Process Time:    0.07s]- Epoch: 13 [1200/1330 ( 90%)]	Losses: ce_loss-0.1930(0.2302) loss_tacl-0.0001(0.0001) loss_sacl-0.0114(0.0109) loss_event-0.0056(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1930(0.2302) 
+[2026-09-19 17:24:26,473]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.07s]- Epoch: 13 [1300/1330 ( 98%)]	Losses: ce_loss-0.1890(0.2308) loss_tacl-0.0001(0.0001) loss_sacl-0.0102(0.0109) loss_event-0.0053(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1890(0.2308) 
+[2026-09-19 17:24:35,244]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.07s]- Epoch: 13 [1330/1330 (100%)]	Losses: ce_loss-0.4290(0.2310) loss_tacl-0.0001(0.0001) loss_sacl-0.0094(0.0109) loss_event-0.0032(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4290(0.2310) 
+[2026-09-19 17:24:36,262]-[train.py line:106]:
+-------------- validation epoch 13 -------------- 
+[2026-09-19 17:24:36,672]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:25:20,407]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:25:20,407]-[trainutils.py line:492]:Epoch 13 -           Audio/Counting accuracy: 84.34(431/511) 
+[2026-09-19 17:25:20,407]-[trainutils.py line:492]:Epoch 13 -        Audio/Comparative accuracy: 61.02(180/295) 
+[2026-09-19 17:25:20,407]-[trainutils.py line:497]:Epoch 13 -                    Audio accuracy: 75.81(611/806) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:492]:Epoch 13 -          Visual/Counting accuracy: 84.33(506/600) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:492]:Epoch 13 -          Visual/Location accuracy: 88.42(542/613) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:497]:Epoch 13 -                   Visual accuracy: 86.40(1048/1213) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:492]:Epoch 13 - Audio-Visual/Existential accuracy: 82.22(407/495) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Counting accuracy: 80.09(507/633) 
+[2026-09-19 17:25:20,408]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Location accuracy: 68.11(314/461) 
+[2026-09-19 17:25:20,410]-[trainutils.py line:492]:Epoch 13 - Audio-Visual/Comparative accuracy: 62.11(341/549) 
+[2026-09-19 17:25:20,410]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 17:25:20,411]-[trainutils.py line:497]:Epoch 13 -             Audio-Visual accuracy: 73.09(1863/2549) 
+[2026-09-19 17:25:20,411]-[trainutils.py line:501]:Epoch 13 -                    Total accuracy: 77.10(3522/4568) 
+[2026-09-19 17:25:20,906]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:26:06,093]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:26:06,094]-[trainutils.py line:492]:Epoch 13 -           Audio/Counting accuracy: 84.34(431/511) 
+[2026-09-19 17:26:06,095]-[trainutils.py line:492]:Epoch 13 -        Audio/Comparative accuracy: 61.69(182/295) 
+[2026-09-19 17:26:06,095]-[trainutils.py line:497]:Epoch 13 -                    Audio accuracy: 76.05(613/806) 
+[2026-09-19 17:26:06,095]-[trainutils.py line:492]:Epoch 13 -          Visual/Counting accuracy: 84.50(507/600) 
+[2026-09-19 17:26:06,096]-[trainutils.py line:492]:Epoch 13 -          Visual/Location accuracy: 88.58(543/613) 
+[2026-09-19 17:26:06,096]-[trainutils.py line:497]:Epoch 13 -                   Visual accuracy: 86.56(1050/1213) 
+[2026-09-19 17:26:06,096]-[trainutils.py line:492]:Epoch 13 - Audio-Visual/Existential accuracy: 82.83(410/495) 
+[2026-09-19 17:26:06,097]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Counting accuracy: 79.62(504/633) 
+[2026-09-19 17:26:06,097]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Location accuracy: 68.33(315/461) 
+[2026-09-19 17:26:06,097]-[trainutils.py line:492]:Epoch 13 - Audio-Visual/Comparative accuracy: 64.12(352/549) 
+[2026-09-19 17:26:06,098]-[trainutils.py line:492]:Epoch 13 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 17:26:06,098]-[trainutils.py line:497]:Epoch 13 -             Audio-Visual accuracy: 73.56(1875/2549) 
+[2026-09-19 17:26:06,098]-[trainutils.py line:501]:Epoch 13 -                    Total accuracy: 77.45(3538/4568) 
+[2026-09-19 17:26:06,104]-[train.py line:167]:Epoch 13 done with 77.45 and loss 0.66797. 
+[2026-09-19 17:26:06,104]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 17:26:06,105]-[train.py line:102]:
+-------------- training epoch 14 -------------- 
+[2026-09-19 17:26:06,402]-[trainutils.py line:416]:[EST:    6.55m][Process Time:    0.07s]- Epoch: 14 [0000/1330 (  0%)]	Losses: ce_loss-0.2207(0.2207) loss_tacl-0.0001(0.0001) loss_sacl-0.0097(0.0097) loss_event-0.0052(0.0052) loss_evidence-0.0000(0.0000) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2207(0.2207) 
+[2026-09-19 17:26:37,372]-[trainutils.py line:416]:[EST:    6.34m][Process Time:    0.07s]- Epoch: 14 [0100/1330 (  8%)]	Losses: ce_loss-0.3032(0.2174) loss_tacl-0.0001(0.0001) loss_sacl-0.0108(0.0108) loss_event-0.0055(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3032(0.2174) 
+[2026-09-19 17:27:08,719]-[trainutils.py line:416]:[EST:    5.86m][Process Time:    0.07s]- Epoch: 14 [0200/1330 ( 15%)]	Losses: ce_loss-0.2023(0.2172) loss_tacl-0.0001(0.0001) loss_sacl-0.0110(0.0107) loss_event-0.0054(0.0053) loss_evidence-0.0009(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2023(0.2172) 
+[2026-09-19 17:27:39,815]-[trainutils.py line:416]:[EST:    5.34m][Process Time:    0.07s]- Epoch: 14 [0300/1330 ( 23%)]	Losses: ce_loss-0.2498(0.2188) loss_tacl-0.0001(0.0001) loss_sacl-0.0098(0.0108) loss_event-0.0051(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2498(0.2188) 
+[2026-09-19 17:28:10,700]-[trainutils.py line:416]:[EST:    4.81m][Process Time:    0.06s]- Epoch: 14 [0400/1330 ( 30%)]	Losses: ce_loss-0.1762(0.2129) loss_tacl-0.0001(0.0001) loss_sacl-0.0112(0.0108) loss_event-0.0053(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1762(0.2129) 
+[2026-09-19 17:28:41,668]-[trainutils.py line:416]:[EST:    4.29m][Process Time:    0.07s]- Epoch: 14 [0500/1330 ( 38%)]	Losses: ce_loss-0.2930(0.2134) loss_tacl-0.0001(0.0001) loss_sacl-0.0092(0.0107) loss_event-0.0049(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2930(0.2134) 
+[2026-09-19 17:29:12,200]-[trainutils.py line:416]:[EST:    3.76m][Process Time:    0.06s]- Epoch: 14 [0600/1330 ( 45%)]	Losses: ce_loss-0.2576(0.2138) loss_tacl-0.0001(0.0001) loss_sacl-0.0098(0.0107) loss_event-0.0057(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2576(0.2138) 
+[2026-09-19 17:29:43,588]-[trainutils.py line:416]:[EST:    3.25m][Process Time:    0.07s]- Epoch: 14 [0700/1330 ( 53%)]	Losses: ce_loss-0.1494(0.2112) loss_tacl-0.0001(0.0001) loss_sacl-0.0104(0.0107) loss_event-0.0052(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1494(0.2112) 
+[2026-09-19 17:30:14,784]-[trainutils.py line:416]:[EST:    2.74m][Process Time:    0.07s]- Epoch: 14 [0800/1330 ( 60%)]	Losses: ce_loss-0.2076(0.2114) loss_tacl-0.0001(0.0001) loss_sacl-0.0106(0.0107) loss_event-0.0057(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2076(0.2114) 
+[2026-09-19 17:30:45,524]-[trainutils.py line:416]:[EST:    2.22m][Process Time:    0.07s]- Epoch: 14 [0900/1330 ( 68%)]	Losses: ce_loss-0.1833(0.2117) loss_tacl-0.0001(0.0001) loss_sacl-0.0112(0.0107) loss_event-0.0055(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1833(0.2117) 
+[2026-09-19 17:31:15,897]-[trainutils.py line:416]:[EST:    1.70m][Process Time:    0.07s]- Epoch: 14 [1000/1330 ( 75%)]	Losses: ce_loss-0.2619(0.2117) loss_tacl-0.0001(0.0001) loss_sacl-0.0094(0.0106) loss_event-0.0050(0.0053) loss_evidence-0.0003(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2619(0.2117) 
+[2026-09-19 17:31:46,178]-[trainutils.py line:416]:[EST:    1.18m][Process Time:    0.07s]- Epoch: 14 [1100/1330 ( 83%)]	Losses: ce_loss-0.1814(0.2118) loss_tacl-0.0001(0.0001) loss_sacl-0.0113(0.0106) loss_event-0.0052(0.0053) loss_evidence-0.0005(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1814(0.2118) 
+[2026-09-19 17:32:16,713]-[trainutils.py line:416]:[EST:    0.66m][Process Time:    0.07s]- Epoch: 14 [1200/1330 ( 90%)]	Losses: ce_loss-0.1226(0.2104) loss_tacl-0.0001(0.0001) loss_sacl-0.0116(0.0106) loss_event-0.0062(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1226(0.2104) 
+[2026-09-19 17:32:47,236]-[trainutils.py line:416]:[EST:    0.15m][Process Time:    0.06s]- Epoch: 14 [1300/1330 ( 98%)]	Losses: ce_loss-0.3297(0.2104) loss_tacl-0.0001(0.0001) loss_sacl-0.0103(0.0106) loss_event-0.0045(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3297(0.2104) 
+[2026-09-19 17:32:55,816]-[trainutils.py line:416]:[EST:   -0.01m][Process Time:    0.06s]- Epoch: 14 [1330/1330 (100%)]	Losses: ce_loss-0.4014(0.2104) loss_tacl-0.0001(0.0001) loss_sacl-0.0102(0.0106) loss_event-0.0050(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.4014(0.2104) 
+[2026-09-19 17:32:56,772]-[train.py line:106]:
+-------------- validation epoch 14 -------------- 
+[2026-09-19 17:32:57,190]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:33:41,326]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:33:41,328]-[trainutils.py line:492]:Epoch 14 -           Audio/Counting accuracy: 84.34(431/511) 
+[2026-09-19 17:33:41,328]-[trainutils.py line:492]:Epoch 14 -        Audio/Comparative accuracy: 61.02(180/295) 
+[2026-09-19 17:33:41,328]-[trainutils.py line:497]:Epoch 14 -                    Audio accuracy: 75.81(611/806) 
+[2026-09-19 17:33:41,329]-[trainutils.py line:492]:Epoch 14 -          Visual/Counting accuracy: 83.83(503/600) 
+[2026-09-19 17:33:41,329]-[trainutils.py line:492]:Epoch 14 -          Visual/Location accuracy: 88.74(544/613) 
+[2026-09-19 17:33:41,329]-[trainutils.py line:497]:Epoch 14 -                   Visual accuracy: 86.31(1047/1213) 
+[2026-09-19 17:33:41,329]-[trainutils.py line:492]:Epoch 14 - Audio-Visual/Existential accuracy: 82.22(407/495) 
+[2026-09-19 17:33:41,330]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Counting accuracy: 77.73(492/633) 
+[2026-09-19 17:33:41,330]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Location accuracy: 68.55(316/461) 
+[2026-09-19 17:33:41,330]-[trainutils.py line:492]:Epoch 14 - Audio-Visual/Comparative accuracy: 63.39(348/549) 
+[2026-09-19 17:33:41,330]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Temporal accuracy: 70.80(291/411) 
+[2026-09-19 17:33:41,331]-[trainutils.py line:497]:Epoch 14 -             Audio-Visual accuracy: 72.73(1854/2549) 
+[2026-09-19 17:33:41,331]-[trainutils.py line:501]:Epoch 14 -                    Total accuracy: 76.88(3512/4568) 
+[2026-09-19 17:33:41,803]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:34:25,449]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:34:25,450]-[trainutils.py line:492]:Epoch 14 -           Audio/Counting accuracy: 84.15(430/511) 
+[2026-09-19 17:34:25,450]-[trainutils.py line:492]:Epoch 14 -        Audio/Comparative accuracy: 61.02(180/295) 
+[2026-09-19 17:34:25,450]-[trainutils.py line:497]:Epoch 14 -                    Audio accuracy: 75.68(610/806) 
+[2026-09-19 17:34:25,450]-[trainutils.py line:492]:Epoch 14 -          Visual/Counting accuracy: 84.50(507/600) 
+[2026-09-19 17:34:25,450]-[trainutils.py line:492]:Epoch 14 -          Visual/Location accuracy: 88.58(543/613) 
+[2026-09-19 17:34:25,450]-[trainutils.py line:497]:Epoch 14 -                   Visual accuracy: 86.56(1050/1213) 
+[2026-09-19 17:34:25,451]-[trainutils.py line:492]:Epoch 14 - Audio-Visual/Existential accuracy: 82.42(408/495) 
+[2026-09-19 17:34:25,451]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Counting accuracy: 79.46(503/633) 
+[2026-09-19 17:34:25,451]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Location accuracy: 68.11(314/461) 
+[2026-09-19 17:34:25,451]-[trainutils.py line:492]:Epoch 14 - Audio-Visual/Comparative accuracy: 64.85(356/549) 
+[2026-09-19 17:34:25,451]-[trainutils.py line:492]:Epoch 14 -    Audio-Visual/Temporal accuracy: 72.26(297/411) 
+[2026-09-19 17:34:25,453]-[trainutils.py line:497]:Epoch 14 -             Audio-Visual accuracy: 73.68(1878/2549) 
+[2026-09-19 17:34:25,453]-[trainutils.py line:501]:Epoch 14 -                    Total accuracy: 77.45(3538/4568) 
+[2026-09-19 17:34:25,457]-[train.py line:167]:Epoch 14 done with 77.45 and loss 0.69141. 
+[2026-09-19 17:34:25,457]-[train.py line:168]:At epoch8 best acc: 77.78. 
+[2026-09-19 17:34:25,457]-[train.py line:102]:
+-------------- training epoch 15 -------------- 
+[2026-09-19 17:34:25,750]-[trainutils.py line:416]:[EST:    6.43m][Process Time:    0.07s]- Epoch: 15 [0000/1330 (  0%)]	Losses: ce_loss-0.0837(0.0837) loss_tacl-0.0001(0.0001) loss_sacl-0.0123(0.0123) loss_event-0.0058(0.0058) loss_evidence-0.0008(0.0008) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.0837(0.0837) 
+[2026-09-19 17:34:54,548]-[trainutils.py line:416]:[EST:    5.90m][Process Time:    0.06s]- Epoch: 15 [0100/1330 (  8%)]	Losses: ce_loss-0.1489(0.1918) loss_tacl-0.0001(0.0001) loss_sacl-0.0100(0.0106) loss_event-0.0051(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1489(0.1918) 
+[2026-09-19 17:35:24,773]-[trainutils.py line:416]:[EST:    5.55m][Process Time:    0.07s]- Epoch: 15 [0200/1330 ( 15%)]	Losses: ce_loss-0.2694(0.1984) loss_tacl-0.0001(0.0001) loss_sacl-0.0103(0.0106) loss_event-0.0049(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2694(0.1984) 
+[2026-09-19 17:35:54,306]-[trainutils.py line:416]:[EST:    5.06m][Process Time:    0.07s]- Epoch: 15 [0300/1330 ( 23%)]	Losses: ce_loss-0.1680(0.1960) loss_tacl-0.0001(0.0001) loss_sacl-0.0097(0.0106) loss_event-0.0049(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1680(0.1960) 
+[2026-09-19 17:36:24,307]-[trainutils.py line:416]:[EST:    4.59m][Process Time:    0.06s]- Epoch: 15 [0400/1330 ( 30%)]	Losses: ce_loss-0.1984(0.1978) loss_tacl-0.0001(0.0001) loss_sacl-0.0099(0.0106) loss_event-0.0049(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1984(0.1978) 
+[2026-09-19 17:36:54,119]-[trainutils.py line:416]:[EST:    4.10m][Process Time:    0.07s]- Epoch: 15 [0500/1330 ( 38%)]	Losses: ce_loss-0.2921(0.1985) loss_tacl-0.0001(0.0001) loss_sacl-0.0113(0.0106) loss_event-0.0056(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2921(0.1985) 
+[2026-09-19 17:37:23,792]-[trainutils.py line:416]:[EST:    3.61m][Process Time:    0.07s]- Epoch: 15 [0600/1330 ( 45%)]	Losses: ce_loss-0.1959(0.1973) loss_tacl-0.0001(0.0001) loss_sacl-0.0103(0.0106) loss_event-0.0054(0.0053) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1959(0.1973) 
+[2026-09-19 17:37:53,407]-[trainutils.py line:416]:[EST:    3.11m][Process Time:    0.07s]- Epoch: 15 [0700/1330 ( 53%)]	Losses: ce_loss-0.2830(0.1971) loss_tacl-0.0001(0.0001) loss_sacl-0.0090(0.0106) loss_event-0.0046(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2830(0.1971) 
+[2026-09-19 17:38:23,152]-[trainutils.py line:416]:[EST:    2.62m][Process Time:    0.06s]- Epoch: 15 [0800/1330 ( 60%)]	Losses: ce_loss-0.2348(0.1966) loss_tacl-0.0001(0.0001) loss_sacl-0.0095(0.0106) loss_event-0.0047(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2348(0.1966) 
+[2026-09-19 17:38:52,778]-[trainutils.py line:416]:[EST:    2.12m][Process Time:    0.06s]- Epoch: 15 [0900/1330 ( 68%)]	Losses: ce_loss-0.1826(0.1967) loss_tacl-0.0001(0.0001) loss_sacl-0.0110(0.0106) loss_event-0.0051(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1826(0.1967) 
+[2026-09-19 17:39:22,782]-[trainutils.py line:416]:[EST:    1.63m][Process Time:    0.07s]- Epoch: 15 [1000/1330 ( 75%)]	Losses: ce_loss-0.1890(0.1984) loss_tacl-0.0001(0.0001) loss_sacl-0.0104(0.0106) loss_event-0.0050(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.1890(0.1984) 
+[2026-09-19 17:39:52,875]-[trainutils.py line:416]:[EST:    1.14m][Process Time:    0.06s]- Epoch: 15 [1100/1330 ( 83%)]	Losses: ce_loss-0.3484(0.1986) loss_tacl-0.0001(0.0001) loss_sacl-0.0090(0.0106) loss_event-0.0050(0.0054) loss_evidence-0.0005(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.3484(0.1986) 
+[2026-09-19 17:40:23,103]-[trainutils.py line:416]:[EST:    0.64m][Process Time:    0.06s]- Epoch: 15 [1200/1330 ( 90%)]	Losses: ce_loss-0.2450(0.1989) loss_tacl-0.0001(0.0001) loss_sacl-0.0110(0.0106) loss_event-0.0047(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2450(0.1989) 
+[2026-09-19 17:40:53,691]-[trainutils.py line:416]:[EST:    0.14m][Process Time:    0.07s]- Epoch: 15 [1300/1330 ( 98%)]	Losses: ce_loss-0.2698(0.1994) loss_tacl-0.0001(0.0001) loss_sacl-0.0114(0.0106) loss_event-0.0060(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0043(0.0043) loss_position--0.0000(0.0000) total_loss-0.2698(0.1994) 
+[2026-09-19 17:41:02,859]-[trainutils.py line:416]:[EST:   -0.00m][Process Time:    0.07s]- Epoch: 15 [1330/1330 (100%)]	Losses: ce_loss-0.4445(0.1997) loss_tacl-0.0001(0.0001) loss_sacl-0.0107(0.0106) loss_event-0.0063(0.0054) loss_evidence-0.0000(0.0001) loss_query_diversity-0.0044(0.0043) loss_position--0.0000(0.0000) total_loss-0.4445(0.1997) 
+[2026-09-19 17:41:03,839]-[train.py line:106]:
+-------------- validation epoch 15 -------------- 
+[2026-09-19 17:41:04,272]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:41:49,892]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:41:49,892]-[trainutils.py line:492]:Epoch 15 -           Audio/Counting accuracy: 84.54(432/511) 
+[2026-09-19 17:41:49,892]-[trainutils.py line:492]:Epoch 15 -        Audio/Comparative accuracy: 60.34(178/295) 
+[2026-09-19 17:41:49,892]-[trainutils.py line:497]:Epoch 15 -                    Audio accuracy: 75.68(610/806) 
+[2026-09-19 17:41:49,892]-[trainutils.py line:492]:Epoch 15 -          Visual/Counting accuracy: 83.67(502/600) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:492]:Epoch 15 -          Visual/Location accuracy: 88.58(543/613) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:497]:Epoch 15 -                   Visual accuracy: 86.15(1045/1213) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:492]:Epoch 15 - Audio-Visual/Existential accuracy: 81.01(401/495) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Counting accuracy: 78.20(495/633) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Location accuracy: 67.03(309/461) 
+[2026-09-19 17:41:49,893]-[trainutils.py line:492]:Epoch 15 - Audio-Visual/Comparative accuracy: 64.48(354/549) 
+[2026-09-19 17:41:49,894]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Temporal accuracy: 71.53(294/411) 
+[2026-09-19 17:41:49,894]-[trainutils.py line:497]:Epoch 15 -             Audio-Visual accuracy: 72.70(1853/2549) 
+[2026-09-19 17:41:49,894]-[trainutils.py line:501]:Epoch 15 -                    Total accuracy: 76.80(3508/4568) 
+[2026-09-19 17:41:50,249]-[trainutils.py line:461]:Test progress:   0/95 
+[2026-09-19 17:42:23,533]-[trainutils.py line:461]:Test progress:  95/95 
+[2026-09-19 17:42:23,534]-[trainutils.py line:492]:Epoch 15 -           Audio/Counting accuracy: 84.54(432/511) 
+[2026-09-19 17:42:23,534]-[trainutils.py line:492]:Epoch 15 -        Audio/Comparative accuracy: 60.34(178/295) 
+[2026-09-19 17:42:23,534]-[trainutils.py line:497]:Epoch 15 -                    Audio accuracy: 75.68(610/806) 
+[2026-09-19 17:42:23,534]-[trainutils.py line:492]:Epoch 15 -          Visual/Counting accuracy: 84.17(505/600) 
+[2026-09-19 17:42:23,534]-[trainutils.py line:492]:Epoch 15 -          Visual/Location accuracy: 88.58(543/613) 
+[2026-09-19 17:42:23,535]-[trainutils.py line:497]:Epoch 15 -                   Visual accuracy: 86.40(1048/1213) 
+[2026-09-19 17:42:23,535]-[trainutils.py line:492]:Epoch 15 - Audio-Visual/Existential accuracy: 82.22(407/495) 
+[2026-09-19 17:42:23,535]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Counting accuracy: 78.99(500/633) 
+[2026-09-19 17:42:23,535]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Location accuracy: 68.55(316/461) 
+[2026-09-19 17:42:23,535]-[trainutils.py line:492]:Epoch 15 - Audio-Visual/Comparative accuracy: 64.85(356/549) 
+[2026-09-19 17:42:23,536]-[trainutils.py line:492]:Epoch 15 -    Audio-Visual/Temporal accuracy: 71.78(295/411) 
+[2026-09-19 17:42:23,536]-[trainutils.py line:497]:Epoch 15 -             Audio-Visual accuracy: 73.52(1874/2549) 
+[2026-09-19 17:42:23,536]-[trainutils.py line:501]:Epoch 15 -                    Total accuracy: 77.32(3532/4568) 
+[2026-09-19 17:42:23,541]-[train.py line:167]:Epoch 15 done with 77.32 and loss 0.71484. 
+[2026-09-19 17:42:23,541]-[train.py line:168]:At epoch8 best acc: 77.78. 

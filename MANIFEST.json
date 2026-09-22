@@ -1,0 +1,50 @@
+{
+  "created_at": "2026-09-20T10:18:57.461435+00:00",
+  "bundle_root": "D:\\AVQA_experiment\\QA-TIGER2\\QAST_77_38_complete_bundle_no_comments_20260920",
+  "source_repo": "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24",
+  "primary_model": {
+    "setting": "QAST-EHR w/o SCM",
+    "seed": 713,
+    "test_accuracy": 77.37977872713331,
+    "correct": 7064,
+    "total": 9129,
+    "checkpoint_sha256": "be9695ae4557a6cc5e607dc84550b2b6764be741cccfe0e57a83ab37a55054cb"
+  },
+  "protocol": "random initialization; 15 epochs; best validation checkpoint; standard train/val/test",
+  "code_source": {
+    "snapshot": "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\code_snapshot.zip",
+    "snapshot_sha256": "cf0956a26ec44be5cdf603b78f1ec3af9d64a440d6a13ce8149a042fbdc5de74",
+    "note": "Extracted from the seed-713 frozen training snapshot; comments and docstrings removed in the bundled copy."
+  },
+  "checkpoints": [
+    {
+      "seed": 713,
+      "setting": "QAST-EHR w/o SCM",
+      "source": "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\best.pt",
+      "bundled": "checkpoints\\seed713_without_scm_best.pt",
+      "sha256": "be9695ae4557a6cc5e607dc84550b2b6764be741cccfe0e57a83ab37a55054cb",
+      "bytes": 60990715
+    },
+    {
+      "seed": 123,
+      "setting": "QAST-EHR w/o SCM",
+      "source": "D:\\model\\qast_ehr_ablation_without_scm_seed123\\2026-09-20-10-08-45_seed123\\best.pt",
+      "bundled": "checkpoints\\seed123_without_scm_best.pt",
+      "sha256": "6cefb53cb7fa832c518716e4069822c7e39bf65d6588e7c35f9d477a85c9f17c",
+      "bytes": 60990715
+    },
+    {
+      "seed": 456,
+      "setting": "QAST-EHR w/o SCM",
+      "source": "D:\\model\\qast_ehr_ablation_without_scm_seed456\\2026-09-20-11-34-24_seed456\\best.pt",
+      "bundled": "checkpoints\\seed456_without_scm_best.pt",
+      "sha256": "373ccdf49ebbae8e2e3c637427de055d8f4d3ec09553feced9d965e1290b49c4",
+      "bytes": 60990715
+    }
+  ],
+  "external_features_not_copied": [
+    "VGGish",
+    "CLIP-L/14",
+    "ToMe"
+  ]
+}

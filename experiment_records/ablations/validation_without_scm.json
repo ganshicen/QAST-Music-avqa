@@ -1,0 +1,36 @@
+{
+    "overall":  78.3493870402802,
+    "audio":  79.15632754342431,
+    "visual":  86.3149216817807,
+    "audio_visual":  74.30364848960376,
+    "av_temporal":  71.53284671532846,
+    "position_ratio":  0.05105445711478513,
+    "max_query_share":  0.3287990419340383,
+    "eligible_for_test":  false,
+    "checkpoint":  "D:\\model\\qast_ehr_ablation_without_scm_seed713\\2026-09-19-13-43-55_seed713\\best.pt",
+    "config":  "D:\\AVQA_experiment\\QA-TIGER2\\QA-TIGER\\reproduce_qast_recent2025_v3_77_24\\experiments\\qast_ehr\\ablations\\configs\\without_scm_seed713.py",
+    "sha256":  "be9695ae4557a6cc5e607dc84550b2b6764be741cccfe0e57a83ab37a55054cb",
+    "counts":  {
+                   "overall":  {
+                                   "correct":  3579,
+                                   "total":  4568
+                               },
+                   "Audio":  {
+                                 "correct":  638,
+                                 "total":  806
+                             },
+                   "Visual":  {
+                                  "correct":  1047,
+                                  "total":  1213
+                              },
+                   "Audio-Visual":  {
+                                        "correct":  1894,
+                                        "total":  2549
+                                    },
+                   "av_temporal":  {
+                                       "correct":  294,
+                                       "total":  411
+                                   }
+               },
+    "name":  "without_scm"
+}
