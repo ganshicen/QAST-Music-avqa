@@ -45,7 +45,7 @@ function Get-CompletedResult([string]$Name, [string]$ConfigPath, [string]$LogPat
 
 function Save-Manifest($Results) {
     $Manifest = [ordered]@{
-        protocol = "w/o SCM baseline; TACL/SACL single-loss ablations; seed 713; random initialization; 15 epochs; best validation checkpoint"
+        protocol = "QAST-EHR baseline; TACL/SACL single-loss ablations; seed 713; random initialization; 15 epochs; best validation checkpoint"
         generated_at = [DateTime]::UtcNow.ToString("o")
         order = $Names
         completed = @($Results).Count

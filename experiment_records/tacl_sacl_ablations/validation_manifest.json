@@ -1,5 +1,5 @@
 {
-    "protocol":  "w/o SCM baseline; TACL/SACL single-loss ablations; seed 713; random initialization; 15 epochs; best validation checkpoint",
+    "protocol":  "QAST-EHR baseline; TACL/SACL single-loss ablations; seed 713; random initialization; 15 epochs; best validation checkpoint",
     "generated_at":  "2026-09-20T07:14:05.3317127Z",
     "order":  [
                   "without_tacl",

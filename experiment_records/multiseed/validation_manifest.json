@@ -1,5 +1,5 @@
 {
-    "protocol":  "w/o SCM; seeds 713, 123, 456; random initialization; 15 epochs; best validation checkpoint",
+    "protocol":  "QAST-EHR; seeds 713, 123, 456; random initialization; 15 epochs; best validation checkpoint",
     "generated_at":  "2026-09-20T05:02:15.8022690Z",
     "seeds":  [
                   713,

@@ -42,7 +42,7 @@ function Get-Completed([int]$Seed, [string]$ConfigPath, [string]$OutputDir, [str
 
 function Save-Manifest($Results) {
     $Manifest = [ordered]@{
-        protocol = "w/o SCM; seeds 713, 123, 456; random initialization; 15 epochs; best validation checkpoint"
+        protocol = "QAST-EHR; seeds 713, 123, 456; random initialization; 15 epochs; best validation checkpoint"
         generated_at = [DateTime]::UtcNow.ToString("o")
         seeds = @(713, 123, 456)
         results = @($Results)

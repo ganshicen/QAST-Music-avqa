@@ -68,7 +68,7 @@ function Get-CompletedResult(
 
 function Save-Manifest($Results) {
     $Manifest = [ordered]@{
-        protocol = "w/o SCM baseline; remaining structural and auxiliary-loss ablations; seed 713; random initialization; 15 epochs"
+        protocol = "QAST-EHR baseline; remaining structural and auxiliary-loss ablations; seed 713; random initialization; 15 epochs"
         generated_at = [DateTime]::UtcNow.ToString("o")
         order = $Names
         completed = @($Results).Count

@@ -142,7 +142,7 @@ def save_summary(results: list[dict]) -> None:
             return float(result['av_temporal']['accuracy'])
         return float(result['summary'][name]['accuracy'])
     stats = {name: sample_stats([accuracy(result, name) for result in results]) for name in metric_names}
-    payload = {'protocol': 'w/o SCM; random initialization; 15 epochs; best validation checkpoint; standard train/val/test', 'generated_at': datetime.now(timezone.utc).isoformat(), 'results': results, 'mean_sample_std': stats}
+    payload = {'protocol': 'QAST-EHR; random initialization; 15 epochs; best validation checkpoint; standard train/val/test', 'generated_at': datetime.now(timezone.utc).isoformat(), 'results': results, 'mean_sample_std': stats}
     (HERE / 'multiseed_test_summary.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     with (HERE / 'multiseed_test_summary.csv').open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
@@ -151,7 +151,7 @@ def save_summary(results: list[dict]) -> None:
             writer.writerow([result['seed'], *[accuracy(result, name) for name in metric_names], result['checkpoint'], result['sha256']])
         writer.writerow(['mean', *[stats[name]['mean'] for name in metric_names], '', ''])
         writer.writerow(['sample_std', *[stats[name]['sample_std'] for name in metric_names], '', ''])
-    lines = ['# w/o SCM 三随机种子标准测试汇总', '', '协议：Seed 713/123/456，随机初始化，完整训练 15 epochs，按验证集选择最佳 checkpoint；测试集仅用于最终一次推理评估。', '', '| 指标 | Seed 713 | Seed 123 | Seed 456 | 均值 ± 样本标准差 |', '|---|---:|---:|---:|---:|']
+    lines = ['# QAST-EHR 三随机种子标准测试汇总', '', '协议：Seed 713/123/456，随机初始化，完整训练 15 epochs，按验证集选择最佳 checkpoint；测试集仅用于最终一次推理评估。', '', '| 指标 | Seed 713 | Seed 123 | Seed 456 | 均值 ± 样本标准差 |', '|---|---:|---:|---:|---:|']
     for name in metric_names:
         values = [accuracy(result, name) for result in results]
         lines.append(f"| {name} | {values[0]:.2f} | {values[1]:.2f} | {values[2]:.2f} | {stats[name]['formatted']} |")

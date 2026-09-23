@@ -2,7 +2,7 @@
 
 ## 核心结果
 
-- 模型设置：QAST-EHR w/o SCM
+- 模型设置：QAST-EHR
 - Seed：713
 - Test Acc：77.3798%（7064/9129）
 - Audio：76.16%
